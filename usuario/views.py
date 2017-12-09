@@ -32,11 +32,11 @@ def logout_view(request):
 
 @login_required(None,'login','/login/')
 def index_view(request):
-    propiedades = Propiedad.objects.filter(usuario=request.user.id)
+    propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
     totalPropiedades = propiedades.count()
     cebos = Estacion.objects.filter(usuario=request.user.id)
     totalCebos = cebos.count()
-    controles_recientes = Control.objects.select_related("estacion").filter(cebo__usuario=request.user.id)[:3]
+    controles_recientes = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)[:3]
     print(controles_recientes)
     totalPropiedades = propiedades.count()
     return render(request, 'index.html',{
