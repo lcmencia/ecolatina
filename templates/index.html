@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block contenido %}
+<div class="ks-dashboard-tabbed-sidebar-widgets">
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="card ks-card-widget ks-widget-payment-total-amount ks-purple-light">
+                                    <h5 class="card-header">Total de Propiedades</h5>
+                                    <div class="card-block">
+                                        <div class="ks-payment-total-amount-item-icon-block">
+                                            <span class="ks-icon la la-building ks-icon"></span>
+                                        </div>
+
+                                        <div class="ks-payment-total-amount-item-body">
+                                            <div class="ks-payment-total-amount-item-amount">
+                                                <span class="ks-amount">{{ totalPropiedades }}</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="card ks-card-widget ks-widget-payment-total-amount ks-green-light">
+                                    <h5 class="card-header">Total Estaciones</h5>
+                                    <div class="card-block">
+                                        <div class="ks-payment-total-amount-item-icon-block">
+                                            <span class="la la-cubes ks-icon"></span>
+                                        </div>
+
+                                        <div class="ks-payment-total-amount-item-body">
+                                            <div class="ks-payment-total-amount-item-amount">
+                                                <span class="ks-amount">{{ totalCebos }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4">
+                                <div class="card ks-card-widget ks-widget-payment-total-amount ks-pink-light">
+                                    <h5 class="card-header">Total Capturados</h5>
+                                    <div class="card-block">
+                                        <div class="ks-payment-total-amount-item-icon-block">
+                                            <span class="la la-bug ks-icon"></span>
+                                        </div>
+
+                                        <div class="ks-payment-total-amount-item-body">
+                                            <div class="ks-payment-total-amount-item-amount">
+                                                <span class="ks-amount">23</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card ks-card-widget ks-widget-table">
+                                    <h5 class="card-header">
+                                        Controles Recientes
+
+                                        <div class="ks-controls">
+                                            <a href="/control/" class="ks-control-link">Ver Todas</a>
+                                        </div>
+                                    </h5>
+                                    <div class="card-block">
+                                        <table class="table ks-payment-table-invoicing">
+                                            <tr>
+                                                <th width="1">Estacion</th>
+                                                <th>Sector</th>
+                                                <th>Propiedad</th>
+                                                <th>Fecha</th>
+                                                <th width="1">Estado</th>
+                                            </tr>
+                                            {% for control in controles_recientes %}
+                                            <tr>
+                                                <td>{{ control.estacion }}</td>
+                                                <td>{{ control.estacion.sector }}</td>
+                                                <td>{{ control.estacion.sector.propiedad }}</td>
+                                                <td>{{ control.inicio }}</td>
+                                                <td>{% for estado in control.estado.all %}
+                                                    {{ estado }}
+                                                    {% if not forloop.last %}, {% endif %}
+                                                  {% endfor %}</td>
+                                               
+                                            </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card ks-card-widget ks-widget-chart-orders">
+                                        <h5 class="card-header">
+                                            Orders
+    
+                                            <div class="ks-controls">
+                                                <a href="#" class="ks-control-link">January 2017</a>
+                                            </div>
+                                        </h5>
+                                        <div class="card-block">
+                                            <div class="ks-chart-orders-block"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} <div class="col-lg-4">
+                                <div class="card panel panel-default ks-widget ks-widget-leader-board">
+                                    <div class="card-header">
+                                        Jefes de Supermercados ({{ jefes.count }})
+                                        <div class="ks-controls">
+                                            <a href="#" class="ks-control ks-update"><span class="ks-icon la la-plus"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="card-block ks-scrollable" data-height="270">
+                                        <table class="ks-table">
+                                            <tbody>
+                                            {% for jefe in jefes %}
+                                            <tr class="ks-first-place">
+                                                <td class="ks-user">
+                                                    <img src="{% static 'img/logo-blanco.png' %}" class="ks-avatar" width="55" height="55">
+                                                    <span class="badge badge-pill badge-default ks-label"><span>{{ forloop.counter }}</span></span>
+                                                </td>
+                                                <td class="ks-info">
+                                                    <a href="#" class="ks-name">{{ jefe.usuario.first_name }} {{ jefe.usuario.last_name }}</a>
+                                                    <div class="ks-description">@{{ jefe.usuario }}</div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                             {% endcomment %}
+                        </div>
+</div>
+{% endblock %}
