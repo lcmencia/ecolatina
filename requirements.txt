@@ -1,6 +1,6 @@
 Django==1.8.7
-django-jet==1.0.6
 django-location-field==2.0.3
+django-material==1.1.1
 olefile==0.44
 Pillow==4.3.0
 six==1.11.0
