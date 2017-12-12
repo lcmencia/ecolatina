@@ -21,7 +21,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,9 +100,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/img')
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Allow Django from all hosts. This snippet is installed from
-# /var/lib/digitalocean/allow_hosts.py
+Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+Allow Django from all hosts. This snippet is installed from
+/var/lib/digitalocean/allow_hosts.py
 
 import os
 import netifaces
