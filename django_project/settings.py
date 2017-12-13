@@ -121,3 +121,6 @@ def ip_addresses():
 # Discover our IP address
 ALLOWED_HOSTS = ip_addresses()
 
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap',
+}
