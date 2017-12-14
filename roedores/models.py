@@ -42,7 +42,7 @@ class Control(models.Model):
     e_pa_deteriorada = models.BooleanField(default=False,verbose_name='Placa deteriorada')
     e_pa_buen_estado = models.BooleanField(default=False,verbose_name='Placa en buen estado')
     e_no_acceso = models.BooleanField(default=False,verbose_name='No se pudo acceder')
-    a_reposicion = models.BooleanField(default=False,verbose_name='Reposición')
+    a_reposicion = models.BooleanField(default=False,verbose_name='Reposicion')
     a_limpieza = models.BooleanField(default=False,verbose_name='Limpieza')
     a_reemplazo = models.BooleanField(default=False,verbose_name='Reemplazo')
     fecha = models.DateField()
