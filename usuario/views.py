@@ -35,20 +35,23 @@ def index_view(request):
     propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
     totalPropiedades = propiedades.count()
     cebos = Estacion.objects.filter(usuario=request.user.id)
-    totalCebos = cebos.count()
-    controles_recientes = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)[:3]
-    print(controles_recientes)
+    controles = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)
+    controles_recientes = controles[:3]
+    capturados = controles.filter(e_capturado=True) 
     totalPropiedades = propiedades.count()
+    totalCebos = cebos.count()
+    totalCapturados = capturados.count()
     return render(request, 'index.html',{
     'propiedades':propiedades,
     'totalPropiedades':totalPropiedades,
     'totalCebos': totalCebos,
-    'controles_recientes':controles_recientes,
+    'totalCapturados': totalCapturados,
+    'controles_recientes': controles_recientes, 
     })
 
 @login_required(None,'login','/login/')
 def control_view(request):
-    controles = Control.objects.select_related("estacion").filter(cebo__usuario=request.user.id)
+    controles = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)
     return render(request, 'control.html',{
     'controles':controles,
     })

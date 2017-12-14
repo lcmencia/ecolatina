@@ -37,7 +37,7 @@ class Propiedad(models.Model):
     imagen = models.ImageField('Imagen del lugar', upload_to='property', blank=True, null=True)
     direccion = models.CharField(max_length=255,blank=True, null=True)
     ciudad = models.CharField(max_length=255,blank=True, null=True)
-    location = PlainLocationField(based_fields=['ciudad'], zoom=7,blank=True, null=True)
+    location = PlainLocationField(based_fields=['ciudad'], default='-25.296223240855703,-57.63144493103027', zoom=7,blank=True, null=True)
     observacion = models.TextField(blank=True, null=True)
 
     class Meta:

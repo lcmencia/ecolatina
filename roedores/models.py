@@ -29,31 +29,22 @@ class Estacion(models.Model):
         self.usuario = _Cliente.usuario.id
         super(Estacion, self).save(*args, **kwargs)
 
-class Estado(models.Model):
-    nombre = models.CharField(unique=True ,max_length=255)
-    descripcion = models.TextField()
-    class Meta:
-        verbose_name_plural = "Estados"
-
-    def __str__(self):
-        return '%s' % (self.nombre)
-
-class Accion(models.Model):
-    nombre = models.CharField(unique=True ,max_length=255)
-    descripcion = models.TextField()
-        
-    class Meta:
-        verbose_name_plural = "Acciones"
-
-    def __str__(self):
-        return '%s' % (self.nombre)  
 
 class Control(models.Model):
     estacion = models.ForeignKey(Estacion, on_delete=models.CASCADE)
     operador = models.ManyToManyField(Funcionario)
     imagen = models.ImageField(upload_to='controles', null=True, blank=True)
-    estado = models.ManyToManyField(Estado)
-    accion = models.ManyToManyField(Accion)
+    e_ausencia = models.BooleanField(default=False,verbose_name='Ausencia de cebo')
+    e_buen_estado = models.BooleanField(default=False,verbose_name='Cebo en buen estado')
+    e_consumido = models.BooleanField(default=False,verbose_name='Cebo consumido')
+    e_deteriorado = models.BooleanField(default=False,verbose_name='Cebo deteriorado')
+    e_capturado = models.BooleanField(default=False,verbose_name='Captura muerta')
+    e_pa_deteriorada = models.BooleanField(default=False,verbose_name='Placa deteriorada')
+    e_pa_buen_estado = models.BooleanField(default=False,verbose_name='Placa en buen estado')
+    e_no_acceso = models.BooleanField(default=False,verbose_name='No se pudo acceder')
+    a_reposicion = models.BooleanField(default=False,verbose_name='Reposición')
+    a_limpieza = models.BooleanField(default=False,verbose_name='Limpieza')
+    a_reemplazo = models.BooleanField(default=False,verbose_name='Reemplazo')
     fecha = models.DateField()
     inicio = models.TimeField()
     fin = models.TimeField()

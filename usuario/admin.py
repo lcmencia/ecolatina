@@ -1,6 +1,12 @@
 from django.contrib import admin
 from .models import *
 
+
+class AdminSector(admin.ModelAdmin):
+    list_display = ('propiedad', 'nombre')
+    icon = '<i class="material-icons">work</i>'
+    
+    
 class EncargadoInline(admin.StackedInline):
     model = Encargado
     extra = 0
@@ -28,6 +34,7 @@ class AdminPropiedad(admin.ModelAdmin):
     raw_id_fields = ('cliente',)
 
 
+admin.site.register(Sector, AdminSector)
 admin.site.register(Cliente, AdminCliente)
 admin.site.register(Funcionario, AdminFuncionario)
 admin.site.register(Propiedad, AdminPropiedad)
