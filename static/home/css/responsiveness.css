@@ -1,0 +1,562 @@
+/* ANCHO MAXIMO SOPORTADO */
+@media (min-width: 2048px) {
+  #main-content {
+  }
+
+  #main-content #free-inspection,
+  #main-content #especialistas {
+    width:2048px;
+    padding-bottom:1348px;
+    background-size:2048px 1384px;
+    margin:0 auto;
+  }
+  
+  #main-content #especialistas:after,
+  #main-content #free-inspection {
+    padding-bottom:1348px;
+    background-size:2048px 1384px;
+    margin:0 auto;
+  }
+  
+  
+  /* CINTAS */
+  #main-content #top-tape .text-wrapper{
+    height:110px;
+    top:-55px;
+  }
+  #main-content #bottom-tape .text-wrapper {
+    height:110px;
+    line-height:175px;
+    bottom:-55px;
+  }
+  
+  
+  /* BANNER INFERIOR - INSPECCION GRATUITA */
+  #main-content #free-inspection .text-wrapper {
+    bottom:65px;
+    margin-right:calc(50% - 1024px);
+    width:350px;
+    height:200px;
+  }
+  
+}
+
+
+@media (max-width: 1650px) {
+  #main-content .especialista-hover-bg,
+  #main-content #free-inspection,
+  #main-content #especialistas:after {
+    background-size:1650px 1115px;
+    margin:0 auto;
+  }
+  /* PERSONS */
+  #main-content #especialistas .one-dude {
+    width:220px;
+  }
+  #main-content #especialistas #especialista-1 {
+    margin-left:calc(50% - 600px);
+    top:160px;
+    height:800px;
+  }
+  #main-content #especialistas #especialista-2 {
+    margin-left:calc(50% - 320px);
+    top:190px;
+    height:750px;
+  }
+  #main-content #especialistas #especialista-3 {
+    margin-left:calc(50% - 65px);
+    top:180px;
+    height:790px;
+  }
+  #main-content #especialistas #especialista-4 {
+    margin-left:calc(50% + 500px);
+    top:160px;
+    height:785px;
+  }
+  /* TEXTO DE PERSONS */
+  #main-content .especialista-hover-text {
+    top: 270px;
+  }
+  #main-content #especialista-1-text {
+    margin-left:calc(50% - 460px);
+  }
+  #main-content #especialista-2-text {
+    margin-left:calc(50% - 170px);
+  }
+  #main-content #especialista-3-text {
+    margin-left:calc(50% + 80px);
+  }
+  #main-content #especialista-4-text {
+    margin-right:calc(50% - 590px);
+  }
+  
+}
+
+@media (max-width: 1350px) {
+  
+  #main-content #especialistas #especialista-1 {
+    margin-left:calc(50% - 485px);
+  }
+  
+  #main-content .especialista-hover-bg,
+  #main-content #free-inspection,
+  #main-content #especialistas:after {
+    background-size:1350px 912px;
+    margin:0 auto;
+  }
+
+  /* PERSONS */
+  #main-content #especialistas .one-dude {
+    width: 200px;
+  }
+  #main-content #especialistas #especialista-1 {
+    margin-left: calc(50% - 500px);
+    top: 130px;
+    height: 660px;
+  }
+  #main-content #especialistas #especialista-2 {
+    margin-left: calc(50% - 270px);
+    top: 150px;
+    height: 620px;
+  }
+  #main-content #especialistas #especialista-3 {
+    margin-left: calc(50% - 65px);
+    top: 140px;
+    height: 660px;
+  }
+  #main-content #especialistas #especialista-4 {
+    margin-left: calc(50% + 390px);
+    top: 130px;
+    height: 650px;
+  }
+  /* TEXTO DE PERSONS */
+  #main-content .especialista-hover-text {
+    top: 220px;
+    height:500px;
+  }
+  #main-content #especialista-1-text {
+    margin-left:calc(50% - 390px);
+  }
+  #main-content #especialista-2-text {
+    margin-left:calc(50% - 150px);
+  }
+  #main-content #especialista-3-text {
+    margin-left:calc(50% + 60px);
+  }
+  #main-content #especialista-4-text {
+    margin-right:calc(50% - 500px);
+  }
+  #main-content #especialista-1-text .wrapper p {
+    line-height:1.1em;
+  }
+  #main-content #especialista-2-text .wrapper p {
+    line-height:1.7em;
+  }
+  #main-content #especialista-3-text .wrapper p {
+    line-height:1.25em;
+  }
+  #main-content #especialista-4-text .wrapper p {
+    line-height:1.5em;
+  }
+  
+}
+@media (max-width: 1100px) {
+  #main-content .especialista-hover-bg,
+  #main-content #free-inspection,
+  #main-content #especialistas:after {
+    background-size:1100px 743px;
+    margin:0 auto;
+  }
+  
+  /* PERSONS */
+  #main-content #especialistas .one-dude {
+    width: 160px;
+  }
+  #main-content #especialistas #especialista-1 {
+    margin-left: calc(50% - 400px);
+    top: 105px;
+    height: 540px;
+  }
+  #main-content #especialistas #especialista-2 {
+    margin-left: calc(50% - 215px);
+    top: 130px;
+    height: 500px;
+  }
+  #main-content #especialistas #especialista-3 {
+    margin-left: calc(50% - 45px);
+    top: 115px;
+    height: 530px;
+  }
+  #main-content #especialistas #especialista-4 {
+    margin-left: calc(50% + 320px);
+    top: 110px;
+    height: 530px;
+  }
+  /* TEXTO DE PERSONS */
+  #main-content .especialista-hover-text {
+    top: 110px;
+    height:470px;
+  }
+  #main-content #especialista-1-text {
+    margin-left:calc(50% - 330px);
+  }
+  #main-content #especialista-2-text {
+    margin-left:calc(50% - 130px);
+  }
+  #main-content #especialista-3-text {
+    margin-left:calc(50% + 30px);
+  }
+  #main-content #especialista-4-text {
+    margin-right:calc(50% - 400px);
+  }
+  #main-content .especialista-hover-text .wrapper p {
+    font-size:15px;
+  }
+  #main-content .especialista-hover-text .wrapper {
+    padding-left: 80px;
+  }
+  #main-content #especialista-1-text .wrapper p {
+    line-height:1.1em;
+  }
+  #main-content #especialista-2-text .wrapper p {
+    line-height:1.6em;
+  }
+  #main-content #especialista-3-text .wrapper p {
+    line-height:1.3em;
+  }
+  #main-content #especialista-4-text .wrapper p {
+    line-height:1.4em;
+  }
+
+  /* CINTA */
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong {
+    font-size:18px;
+  }
+}
+@media (max-width: 900px) {
+  #main-content .especialista-hover-bg,
+  #main-content #free-inspection,
+  #main-content #especialistas:after {
+    background-size:900px 608px;
+    margin:0 auto;
+  }
+
+  /* PERSONS */
+  #main-content #especialistas .one-dude {
+    width: 130px;
+  }
+  #main-content #especialistas #especialista-1 {
+    margin-left:calc(50% - 330px);
+    top: 85px;
+    height: 430px;
+  }
+  #main-content #especialistas #especialista-2 {
+    margin-left: calc(50% - 175px);
+    top: 95px;
+    height: 420px;
+  }
+  #main-content #especialistas #especialista-3 {
+    margin-left: calc(50% - 40px);
+    top: 95px;
+    height: 430px;
+  }
+  #main-content #especialistas #especialista-4 {
+    margin-left: calc(50% + 260px);
+    top: 90px;
+    height: 430px;
+  }
+  /* TEXTO DE PERSONS */
+  #main-content .especialista-hover-text {
+    top: 95px;
+    height:390px;
+  }
+  #main-content .especialista-hover-text .wrapper p {
+    font-size:13px;
+  }
+  #main-content #especialista-1-text {
+    margin-left:calc(50% - 280px);
+  }
+  #main-content #especialista-2-text {
+    margin-left:calc(50% - 130px);
+  }
+  #main-content #especialista-3-text {
+    margin-left:calc(50% + 10px);
+  }
+  #main-content #especialista-4-text {
+    margin-right:calc(50% - 350px);
+  }
+  
+  /* CINTA */
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong {
+    font-size:15px;
+  }
+  
+}
+
+
+
+@media (max-width: 768px){
+  
+  #main-content .about {
+    height:auto;
+  }
+  #main-content .about .image-wrapper {
+    float:none;
+    text-align:center;
+    width:100%;
+  }
+  #main-content .about .image-wrapper img {
+    margin:0;
+  }
+  #main-content .about .text-wrapper {
+    float:none;
+    margin-top:30px;
+    width:100%;
+    text-align:center;
+  }
+  #main-content .about .text-wrapper h1,
+  #main-content .about .text-wrapper p {
+    text-align:center;
+    width:100%;
+    margin:0;
+  }
+  #main-content .about .text-wrapper p {
+    padding:10px 20px;
+  }
+  
+  /* NAVIGATION BAR - DROP DOWN*/
+  #navbar {
+    position:fixed;
+    width:100%;
+    height:calc(100% - 50px); 
+    top:80px;
+    left:0px;
+    background-color:rgba(0,0,0,0.9);
+    margin:0;
+    padding:0;
+    text-align:center;
+  }
+  .navbar-inverse {
+    max-height:50px;
+  }
+  .nav.navbar-nav {
+    position:relative;
+    width:100%;
+    text-align:center;
+    margin:0;
+    padding:0;
+  }
+  .navbar-nav>li>a {
+    font-size:26px;
+    line-height:40px;
+  }
+  .navbar-inverse .navbar-nav>li.active:before {
+    content:none;
+  }
+  .navbar-inverse .navbar-nav>.active>a,
+  .navbar-inverse .navbar-nav>.active>a:focus {
+    background-color:rgba(0,0,0,0);
+  }
+  .navbar-inverse .navbar-nav>.active>a:hover,
+  .navbar-inverse .navbar-nav>li>a:hover {
+    background-color:rgba(255,255,255,0.1);
+  }
+  /* escondemos los especialistas */
+  .especialista-hover-bg,
+  .especialista-hover-text,
+  #main-content #especialistas .one-dude {
+    display:none;
+  }
+  #main-content #especialistas {
+    padding-bottom:80%;
+  }
+  #main-content #free-inspection,
+  #main-content #especialistas:after {
+    background-size:cover;
+    margin:0 auto;
+    padding-bottom:80%;
+  }
+ 
+  /* CINTA */
+  #main-content #bottom-tape .text-wrapper, 
+  #main-content #top-tape .text-wrapper {
+    overflow:hidden;
+  }
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong {
+    font-size:12px;
+    margin:0 10px;
+  }
+ 
+  /* boton de inspeccion gratuita */
+  #main-content #free-inspection .text-wrapper {
+    right:30px;
+    bottom:0px;
+    width:250px;
+    height:200px;
+  }
+  #main-content #free-inspection .text-wrapper h1 {
+    font-size:30px;
+  } 
+  .modal-content .modal-header .modal-title {
+    font-size:28px;
+  }
+  
+  /*  BLOG */
+  #main-content.blog #blog-bg {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0px;
+    background-size:cover;
+    background-position:initial;
+  /* REMOVE PARALLAX */
+    transform: none;
+  }
+  #blog-wrapper {
+    transform: none;
+  }
+  
+}
+
+@media (max-width: 500px){
+  /*  isotipo gigante en quienes somos */
+  #main-content .about .image-wrapper img {
+    width:60%;
+    height:auto;
+  }
+  
+  #main-content #especialistas:after {
+    margin-top:30px;
+  }
+  #main-content #free-inspection .text-wrapper {
+    right:20px;
+    bottom:30px;
+    width:50%;
+    height:180px;
+  }
+  #main-content #free-inspection .text-wrapper a.btn {
+    max-width:90%;
+  }
+  #main-content #free-inspection .text-wrapper h1 {
+    font-size:24px;
+  }
+  
+  #main-content #clients h1 {
+    font-size:20px;
+  }
+  
+  /* cintas */
+  #main-content #bottom-tape,
+  #main-content #top-tape {
+    height:80px;
+  }
+  #main-content #bottom-tape .text-wrapper {
+    background-size:120%;
+    line-height:165px;
+  }
+  #main-content #top-tape .text-wrapper {
+    background-size:120%;
+    line-height:30px;
+  }
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong{
+    font-size:11px;
+    margin:0px 4px;
+  }
+  .modal-content .modal-header .modal-title {
+    font-size:24px;
+  }
+}
+/* iphone 6 y 6plus */
+@media (max-width: 414px){
+  #main-content #especialistas {
+    padding-bottom:95%;
+  }
+  #main-content #free-inspection .text-wrapper {
+    height:150px;
+    bottom:-60px;
+    right:10px;
+  }
+  #main-content #free-inspection {
+    background-position:0px 30px;
+  }
+  #main-content #free-inspection .text-wrapper h1 {
+    font-size:22px;
+  }
+  /*  cintas */
+  #main-content #bottom-tape .text-wrapper {
+    line-height:170px;
+  }
+  #main-content #top-tape .text-wrapper {
+    line-height:22px;
+  }
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong{
+    font-size:10px;
+    margin:0px 2px;
+  }
+  .modal-content .modal-header .modal-title {
+    font-size:20px;
+  }
+  
+  /* BLOG */
+  .blog-post {
+    padding:15px;
+  }
+  
+}
+
+/* iphone 5s */
+@media (max-width: 320px){
+  #main-content #especialistas {
+    padding-bottom:100%;
+  }
+  #main-content #especialistas:after {
+    margin-top:50px;
+  }
+  #main-content #free-inspection .text-wrapper {
+    height:150px;
+    bottom:-80px;
+    right:20px;
+  }
+  #main-content #free-inspection {
+    background-position:0px 30px;
+  }
+  #main-content #free-inspection .text-wrapper h1 {
+    font-size:22px;
+  }
+
+  /*  cintas */
+  #main-content #bottom-tape .text-wrapper {
+    line-height:172px;
+  }
+  #main-content #top-tape .text-wrapper {
+    line-height:17px;
+  }
+  #main-content #bottom-tape .text-wrapper strong, 
+  #main-content #top-tape .text-wrapper strong{
+    font-size:8px;
+    margin:0px 1px;
+  }
+  .modal-header {
+    padding:10px;
+  }
+  .modal-content .modal-header .modal-title {
+    font-size:16px;
+  }
+  .modal-content p {
+    font-size:12px;
+    padding: 10px 0px;
+  }
+  #main-content #clients h1 {
+    font-size:15px;
+  }
+  #main-content .about .text-wrapper h1 {
+    font-size:24px;
+  }
+
+}

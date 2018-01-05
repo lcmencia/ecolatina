@@ -12,8 +12,13 @@ from django.http import JsonResponse
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+import datetime, time
+from dateutil.relativedelta import relativedelta
+from django.views.generic import TemplateView
 
-User = get_user_model()
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
 @ensure_csrf_cookie
 def authentication(request):
@@ -77,9 +82,39 @@ class ChartData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        qs_count = User.objects.all().count()
-        labels = ["Users", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_items = [qs_count, 22, 2, 3, 12, 2]
+        z = datetime.datetime.now()
+        z_mes = z.month
+        label_z_mes = z.strftime("%B-%Y")
+        cantidad_z_mes = Control.objects.filter(fecha__month=z_mes).count()
+        
+        y = z - relativedelta(months=1)
+        y_mes = y.month 
+        label_y_mes = y.strftime("%B-%Y")
+        cantidad_y_mes = Control.objects.filter(fecha__month=y_mes).count()
+        
+        x = y - relativedelta(months=1)
+        x_mes = x.month 
+        label_x_mes = x.strftime("%B-%Y")
+        cantidad_x_mes = Control.objects.filter(fecha__month=x_mes).count()
+        
+        w = x - relativedelta(months=1)
+        w_mes = w.month 
+        label_w_mes = w.strftime("%B-%Y")
+        cantidad_w_mes = Control.objects.filter(fecha__month=w_mes).count()
+        
+        v = w - relativedelta(months=1)
+        v_mes = v.month 
+        label_v_mes = v.strftime("%B-%Y")
+        cantidad_v_mes = Control.objects.filter(fecha__month=v_mes).count()
+
+        u = v - relativedelta(months=1)
+        u_mes = u.month 
+        label_u_mes = u.strftime("%B-%Y")
+        cantidad_u_mes = Control.objects.filter(fecha__month=u_mes).count()
+
+
+        labels = [label_u_mes, label_v_mes, label_w_mes, label_x_mes, label_y_mes, label_z_mes]
+        default_items = [cantidad_u_mes, cantidad_v_mes, cantidad_w_mes, cantidad_x_mes, cantidad_y_mes, cantidad_z_mes]
         data = {
                 "labels": labels,
                 "default": default_items,

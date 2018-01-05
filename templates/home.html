@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+<!-- Mirrored from ecolatina.com.py/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Oct 2017 15:46:00 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Ecolatina es una empresa de control de plagas">
+   
+    
+    <meta name="google-site-verification" content="41gqztnhGE963EOkjF-1GC-m2PCpDsexeVEH0F4j9FA" />
+    
+    <link rel="icon" href="{% static 'home/images/favicon.png'%}">
+
+    <title>Ecolatina - Control de plagas</title>
+
+    <!-- Bootstrap core CSS -->
+   
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/ecolatina.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/responsiveness.css" %}" />
+    <!-- Facebook Pixel Code -->
+	<script>
+	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+	n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+	document,'script','../connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '1688756898032817');
+	fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	src="https://www.facebook.com/tr?id=1688756898032817&amp;ev=PageView&amp;noscript=1"
+	/></noscript>
+	<!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82400961-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+ 
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="ecolatina-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Activar navegación</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'home/images/ecolatina-logo.png' %}" width="164" height="44" alt="Ecolatina">
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li><a id="about-link" href="#quienes-somos">¿QUIENES SOMOS?</a></li>
+            <li><a href="#" data-toggle="modal" data-target=".modal-budget">PRESUPUESTO</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="/panel/">PANEL</a></li>
+            <li class="ignore"><a id="bottom-tape" href="#free-inspection">botton</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- MODAL PARA PRESUPUESTO -->
+    <div class="modal fade modal-budget" tabindex="-1" role="dialog" aria-labelledby="budgetTitle">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="budgetTitle">SOLICITUD DE PRESUPUESTO</h4>
+          </div>
+          <div class="modal-body">
+            
+            <p>Obtenga una <strong>INSPECCIÓN GRATUITA</strong> completando sus datos. Nuestros especialistas se comunicarán con usted en la brevedad posible.</p>
+            <!-- NOTIFICACIONES DEL FORMULARIO DE PRESUPUESTO -->
+            <div id="budget-notification" class="alert" style="display:none;">
+              
+            </div>
+            <form class="col-md-10 col-md-offset-1 text-left" id="budget-form">
+              <div class="form-group">
+                <label for="email">Nombre y Apellido</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Su nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono de contacto</label>
+                <input type="tel" class="form-control" id="phone" name="phone" placeholder="Su número de teléfono">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <label for="company">Empresa</label>
+                <input type="text" class="form-control" id="company" name="company" placeholder="El nombre de su empresa">
+              </div>
+              <div class="form-group">
+                <label for="details">Descripción del problema</label>
+                <textarea name="details" class="form-control" rows="8" cols="40" id="details" placeholder="Ingrese los detalles de su problema"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="captcha-form">Código de seguridad</label><br />
+                <img src="captcha.jpg" id="captcha" /><br/>
+                <!-- CHANGE TEXT LINK -->
+                <a href="#" onclick="
+                document.getElementById('captcha').src='captchad41d.jpg?'+Math.random();
+                document.getElementById('captcha-form').focus();"
+                id="change-image">Recargar imagen.</a><br/><br/>
+                <input type="text" name="captcha" id="captcha-form" name="captcha-form" autocomplete="off" class="form-control" />
+              </div>
+              <button type="submit" class="btn btn-yellow center-block" id="send-budget-form">SOLICITAR</button>
+            </form>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-content">
+      <!-- BANNER SUPERIOR -->
+      <div class="especialista-hover-bg" id="especialista-1-hover"></div>
+      <div class="especialista-hover-text" id="especialista-1-text">
+        <h2>ESPECIALISTA EN INSECTOS Y PARASITOS</h2>
+        <div class="wrapper">
+          <p>Identifica el lugar de refugio y tránsito de la plaga, emplea distintos productos en baja dosificación de insecticida de alto efecto expulsivo y volteo con excelente poder residual, altamente seguros para el medio, pueden ser en forma de gel, polvo o líquido. <br />
+Con los tratamientos enunciados combina distintas acciones de prevención, detección y control, logrando un rotundo resultado en las diferentes áreas de la instalación. <br />
+Eliminando de nitivamente a los insectos y otras plagas rasteras.</p>
+        </div>
+      </div>
+      <div class="especialista-hover-bg" id="especialista-2-hover"></div>
+      <div class="especialista-hover-text yellow" id="especialista-2-text">
+        <h2>ESPECIALISTA EN TERMITAS Y CARCOMAS</h2>
+        <div class="wrapper">
+          <p>Examina el lugar atacado por termitas y otros xilógafos localizando camineros y termiteros del lugar.<br />
+            Aísla el sitio utilizando el método de barrera química evitando el ingreso de las mismas y eliminandolas, pulveriza todo el maderamen afectado del lugar.<br />
+            Elimina termiteros y cualquier indicio de su existencia.</p>
+        </div>
+      </div>
+      <div class="especialista-hover-bg" id="especialista-3-hover"></div>
+      <div class="especialista-hover-text" id="especialista-3-text">
+        <h2>ESPECIALISTA EN <br /> ROEDORES</h2>
+        <div class="wrapper">
+          <p>Identifica el área de refugio, tránsito y las fuentes de alimentación. <br />
+            Emplea distintas técnicas como uso de bandejas con pegamentos, descartables, jaulas / trampa y aplicación de cebos tóxicos, ubicados estratégicamente fuera del alcance de los niños y las mascotas.<br />
+            En algunos casos confeccionamos previamente un croquis de las instalaciones para indicar la ubicación de los cebos para el control de los roedores.</p>
+        </div>
+      </div>
+      <div class="especialista-hover-bg" id="especialista-4-hover"></div>
+      <div class="especialista-hover-text yellow" id="especialista-4-text">
+        <h2>ESPECIALISTA EN MURCIELAGOS Y PALOMAS</h2>
+        <div class="wrapper">
+          <p>Modifica el hábitat en estructuras urbanas para evitar su asentamiento.<br />
+             Coloca mallas plásticas o metálicas en huecos o espacios donde buscan quedarse e impedimentos físicos en las entradas de taparrollos externos. <br />
+             Coloca sustancias repelentes específicas (sólidas o en aerosol) en aquellos lugares donde habitan, eliminandolas sin tener que matarlas.</p>
+        </div>
+      </div>
+      <!-- IMAGEN DE FONDO DEL BANNER Y ESPACIOS PARA MOSTRAR LAS ESPECIALIDADES ON MOUSE OVER -->
+      <div id="especialistas">
+        <div id="especialista-1" class="one-dude"></div>
+        <div id="especialista-2" class="one-dude"></div>
+        <div id="especialista-3" class="one-dude"></div>
+        <div id="especialista-4" class="one-dude"></div>
+      </div>
+      
+      <!-- CINTA SUPERIOR -->
+      <div id="top-tape" class="taped">
+        <div class="text-wrapper">
+          <strong>TERMITAS</strong>
+          <strong>GARRAPATAS</strong>
+          <strong>RATAS</strong>
+          <strong>CHINCHES</strong>
+          <strong>ALACRANES</strong>
+          <strong>TOPOS</strong>
+          <strong>HORMIGAS</strong>
+        </div>
+      </div>
+      
+      <!-- QUIENES SOMOS -->
+      <div id="quienes-somos" class="about">
+        <div class="image-wrapper">
+          <img src="{% static 'home/images/ecolatina-isotipo.png' %}" width="318" height="350" alt="Sobre Ecolatina">
+        </div>
+        <div class="text-wrapper">
+          <h1>¿QUIÉNES SOMOS?</h1>
+          <p>Somos una empresa de control de plagas, que respeta el medio ambiente y la salud de nuestros clientes. Nuestros métodos de trabajo garantizan un servicio eficiente y responsable, contamos con técnicos capacitados, controlamos todo tipo de plagas urbanas y rurales en todo el Paraguay.</p>
+          
+          <p class="telefono">(021) 338 45 35 - 
+(0981) 55 72 89</p>
+
+        </div>
+        <div class="clearfix">
+          
+        </div>
+      </div>
+      
+      <!-- CINTA INFERIOR -->
+      <div id="bottom-tape" class="taped">
+        <div class="text-wrapper">
+          <strong>CASAS</strong>
+          <strong>OFICINAS</strong>
+          <strong>RESTAURANTES</strong>
+          <strong>DEPÓSITOS</strong>
+          <strong>INDUSTRIAS</strong>
+          <strong>EDIFICIOS</strong>
+        </div>
+      </div>
+      
+      <!-- BANNER INFERIOR -->
+      <div id="free-inspection">
+        <div class="text-wrapper">
+          <h1>INSPECCIÓN GRATUITA</h1>
+          <a href="#" class="btn" data-toggle='modal' data-target=".modal-budget">SOLICITAR</a>
+        </div>
+      </div>
+      
+      <!-- ALGUNOS CLIENTES -->
+      <div id="clients">
+        <h1>TAMBIÉN CONFÍAN EN NOSOTROS</h1>
+        <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-2 col-sm-3 col-sm-offset-1 col-xs-5 col-xs-offset-1">
+          <img src="{% static 'home/images/clientes/walterio.svg'%}" alt="Walterio">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-5">
+          <img src="{% static 'home/images/clientes/sandoichi.svg'%}" alt="Sandoichi">
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-4 col-sm-offset-0 col-xs-5 col-xs-offset-1">
+          <img src="{% static 'home/images/clientes/taberna-espanola.svg'%}" alt="Taberna Española">
+        </div>
+        <div class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-3 col-sm-4 col-sm-offset-2 col-xs-5">
+          <img src="{% static 'home/images/clientes/cafe-mayo.svg'%}" alt="Café Mayo">
+        </div>
+        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+          <img src="{% static 'home/images/clientes/4p.svg'%}" alt="4P Primera Productora Paraguaya de Plásticos">
+        </div>
+        <div class="clearfix">
+          
+        </div>
+      </div><!-- fin de clientes -->
+      
+    </div><!-- /#main-content -->
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="{% static 'home/js/jquery.min.js'%}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'home/js/ecolatina.js'%}" type="text/javascript"></script>
+
+
+
+  </body>
+
+<!-- Mirrored from ecolatina.com.py/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Oct 2017 15:47:27 GMT -->
+</html>

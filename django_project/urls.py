@@ -6,7 +6,8 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',  views.index_view),
+    url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^panel/$',  views.index_view),
     url(r'^control/$',  views.control_view),
     url(r'^property/$',  views.property_view),
     url(r'^login/$',views.authentication, name='authentication'),

@@ -1,0 +1,610 @@
+html, body {
+  background-color:#000;
+  height:100%;
+}
+body {
+  position:relative;
+}
+.navbar-header {
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding-left:20px;
+  width:100%;
+}
+.nav.navbar-nav {
+  position:absolute;
+  top:0px;
+  right:0px;
+  font-weight:bolder;
+}
+.ignore,
+.ignore a {
+  display:none;
+  visibility: hidden; 
+  width:0% !important;
+  height:0 !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+
+
+/* BARRITA CASHIAI DEBAJO DEL LOGO (EL NEGRO) */
+.navbar-header:before {
+  position:absolute;
+  bottom:-5px;
+  left:0px;
+  content:'';
+  background-color:#000;
+  height:29px;
+  width:227px;
+  display:block;
+  z-index:-1;
+}
+/* BARRITA CASHIAI EN DIAGONAL DEBAJO DEL LOGO (EL NEGRO) */
+.navbar-header:after {
+  position:absolute;
+  bottom: 6px;
+  left: 212px;
+  background-color: #000;
+  height: 26px;
+  width: 43px;
+  z-index: -1;
+  transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+/* FONDO NEGRO PARA EL MENU y SIN BORDE */
+.navbar-inverse {
+  background-color:#000;
+  border-bottom:none;
+}
+
+.navbar>.container .navbar-brand {
+  height:auto;
+  z-index:1;
+}
+
+/* CAMBIAR ESTO DESPUES */
+.navbar>.container .navbar-brand.img {
+  transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  margin-left: 10px;
+}
+/* HASTA ACA NOMAS LO QUE HAY QUE CAMBIAR*/
+
+
+/* MENU */
+.navbar-inverse .navbar-nav>li>a {
+  color:#FFF;
+}
+.navbar-inverse .navbar-nav>li.active:before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 3px;
+  background-color: #cb2333;
+  display: block;
+  z-index: 1;
+  width: 100%;
+}
+
+
+/* CONTENIDO DE LA WEB  */
+#main-content {
+  margin-top:50px auto 0 auto;
+  text-align:center;
+  background-color:#000;
+  width:100%;
+  overflow:hidden;
+}
+
+/* BANNER SUPERIOR - FOTO GRANDE */
+#main-content #especialistas {
+  width:100%;
+  padding-bottom:67.57%;
+  position:relative;
+}
+#main-content #especialistas.grayscaled:after {
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+}
+#main-content #especialistas:after {
+  background-image:url('../images/foto-fondo.jpg');
+  background-size:2048px 1384px;
+  background-position:top center;
+  background-repeat:no-repeat;
+  position:absolute;
+  left:0px;
+  top:0px;
+  content:'';
+  width:100%;
+  padding-bottom:67.57%;
+  z-index:0;
+}
+/* PERSONS */
+#main-content #especialistas .one-dude {
+  position:absolute;
+  left:0;
+  width:300px;
+  z-index:20;
+  opacity:0;
+}
+/* PERSONS Y SUS MOUSE OVER */
+#main-content #especialistas #especialista-1 {
+  margin-left:calc(50% - 750px);
+  top: 170px;
+  height:1050px;
+/*  background-color:rgba(255,0,0,.5);*/
+}
+#main-content #especialistas #especialista-2 {
+  margin-left:calc(50% - 400px);
+  top: 190px;
+  height:980px;
+/*  background-color:rgba(0,255,0,.5);*/
+}
+#main-content #especialistas #especialista-3 {
+  margin-left:calc(50% - 80px);
+  top: 200px;
+  height:1000px;
+/*  background-color:rgba(0,0,255,.5);*/
+}
+#main-content #especialistas #especialista-4 {
+  margin-left:calc(50% + 600px);
+  top: 200px;
+  height:1000px;
+/*  background-color:rgba(255,0,255,.5);*/
+}
+/* MOUSE OVER DE LOS PERSONS */
+#main-content .especialista-hover-bg {
+  background-size:2048px 1384px;
+  background-position:top center;
+  background-repeat:no-repeat;
+  position:absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  padding-bottom:67.57%;
+  z-index:10;
+  content:'';
+  opacity:0;
+}
+/* TEXTO ON MOUSE OVER */
+#main-content .especialista-hover-text {
+  z-index:5;
+  position: absolute;
+  color:#FFF;
+  background-color:rgba(0,0,0,0.7);
+  top: 350px;
+  left:0;
+  overflow:hidden;
+  width:0px;
+  height: 600px;
+  font-size:15px;
+}
+/* titulo del mouse over (fondo rojo o amarillo )*/
+#main-content .especialista-hover-text h2 {
+  margin:0;
+  width:270px;
+  padding:5px 10px 5px 45px;
+  font-size:14px;
+  background-color:#B82431;
+  text-align:center;
+  font-weight:bolder;
+  line-height:18px;
+}
+#main-content .especialista-hover-text.yellow h2 {
+  background-color:#FBDD44;
+  color:#000;
+  font-weight:bolder;
+}
+#main-content .especialista-hover-text .wrapper {
+  width:270px;
+  padding:20px 20px 20px 90px;
+}
+#main-content .especialista-hover-text .wrapper p {
+  font-size:15px;
+  text-align:left;
+}
+#main-content #especialista-1-hover {
+  background-image:url('../images/especialista-01.png');
+  z-index:7;
+}
+#main-content #especialista-1-text {
+  margin-left:calc(50% - 540px);
+  z-index:6;
+}
+
+#main-content #especialista-2-hover {
+  background-image:url('../images/especialista-02.png');
+  z-index:5;
+}
+#main-content #especialista-2-text {
+  margin-left:calc(50% - 190px);
+  z-index:4;
+}
+#main-content #especialista-3-hover {
+  background-image:url('../images/especialista-03.png');
+  z-index:3;
+}
+#main-content #especialista-3-text {
+  margin-left:calc(50% + 120px);
+  z-index:2;
+}
+#main-content #especialista-4-hover {
+  background-image:url('../images/especialista-04.png');
+}
+#main-content #especialista-4-text {
+  margin-right: calc(50% - 700px);
+  right: 0;
+  left: initial;
+}
+#main-content #especialista-1-text .wrapper p {
+  line-height:1.3em;
+}
+#main-content #especialista-2-text .wrapper p {
+  line-height:2em;
+}
+#main-content #especialista-3-text .wrapper p {
+/*  line-height:1em;*/
+}
+#main-content #especialista-4-text .wrapper p {
+  line-height:1.8em;
+}
+/* el cuarto tiene el cuadro al otro lado */
+#main-content #especialista-4-text h2 {
+  padding:5px 45px 5px 10px;
+}
+#main-content #especialista-4-text .wrapper {
+  padding:20px 90px 3px 20px;
+}
+#main-content #especialista-4-text .wrapper p {
+  text-align:left;
+}
+
+#main-content .especialista-hover-bg.hovered {
+  opacity:1;
+}
+/* CINTAS  */
+#main-content #bottom-tape,
+#main-content #top-tape {
+  background-color:rgba(0,0,0,0);
+  height:120px;
+  width:100%;
+  position:relative;
+  z-index:20;
+}
+#main-content #bottom-tape .text-wrapper,
+#main-content #top-tape .text-wrapper{
+  background-image:url('../images/cinta.png');
+  background-color:#000;
+  background-repeat:repeat-x;
+  background-position:top left;
+  text-align:center;
+  width:calc(100% + 15px);
+  height:97px;
+  line-height:47px;
+  position:absolute;
+  left:-7px;
+  top:-45px;
+  transform:rotate(3deg);
+  -webkit-transform:rotate(3deg);
+  -moz-transform:rotate(3deg);
+  -ms-transform:rotate(3deg);
+  -o-transform:rotate(3deg);
+}
+#main-content #bottom-tape .text-wrapper {
+  background-position:bottom left;
+  line-height:147px;
+  top:initial;
+  bottom:-45px;
+  transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  -ms-transform:rotate(-3deg);
+  -o-transform:rotate(-3deg);
+  z-index:2;
+}
+#main-content #bottom-tape .text-wrapper strong,
+#main-content #top-tape .text-wrapper strong {
+  font-size:22px;
+  color:#000;
+  margin:0 2%;
+  display:inline-block;
+}
+/* QUIENES SOMOS */
+#main-content .about {
+  background-color:#000;
+  width:100%;
+  height:410px;
+  position:relative;
+  color:#FFF;
+}
+#main-content .about .image-wrapper {
+  float:left;
+  width:50%;
+  margin-top:20px;
+  text-align:right;
+}
+#main-content .about .image-wrapper img {
+  margin-right:10%;
+}
+#main-content .about .text-wrapper {
+  float:right;
+  margin-top:50px;
+  width:50%;
+  text-align:left;
+}
+#main-content .about .text-wrapper h1,
+#main-content .about .text-wrapper p {
+  text-align:justify;
+  width:65%;
+  margin-left:10%;
+}
+#main-content .about .text-wrapper h1 {
+  text-align:center;
+}
+
+.telefono {
+  text-align:left;
+  font-size: 25px;
+  font-weight: bold;
+  padding-left:3%;
+  padding-top: 30px;
+}
+
+
+/* BANNER INFERIOR - INSPECCION GRATUITA */
+#main-content #free-inspection {
+  background-image:url('../images/foto-abajo.jpg');
+  background-size:2048px 1384px;
+  background-position:top center;
+  background-repeat:no-repeat;
+  width:100%;
+  padding-bottom:67.57%;
+  position:relative;
+}
+#main-content #free-inspection .text-wrapper {
+  position:absolute;
+  bottom:65px;
+  right:45px;
+  width:350px;
+  height:200px;
+  z-index:1;
+}
+#main-content #free-inspection .text-wrapper h1 {
+  font-size:50px;
+  color:#FFF;
+  text-shadow:3px 3px 10px #000;
+}
+#main-content #free-inspection .text-wrapper a.btn {
+  background-color:#fbde44;
+  color:#000;
+  font-weight:bold;
+  width:180px;
+  height:50px;
+  line-height:40px;
+  font-size:22px;
+}
+/* EFECTO DE DEGRADADO QUE TIENE BIEN ABAJO */
+#main-content #free-inspection:after {
+  content:'';
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:200px;
+  z-index:0;
+  background: rgba(0,0,0,0); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax */
+  
+}
+
+/* CLIENTES */
+#main-content #clients {
+  background-color:#000;
+  padding:100px 0;
+}
+#main-content #clients h1 {
+  color:#FFF;
+  font-size:26px;
+  margin-bottom:30px;
+}
+#main-content #clients div {
+  min-height:115px;
+}
+#main-content #clients img {
+  margin:20px auto;
+}
+
+/* MODALS */
+.modal-content {
+  text-align:center;
+  border-radius:0px;
+  background-color:#000;
+  color:#FFF;
+  box-shadow:none;
+}
+
+/* encabezado del modal */
+.modal-content .modal-header{
+  background-color:#2A2A2A;
+  border:none;
+}
+.modal-content .modal-header .modal-title {
+  font-size:34px;
+}
+.modal-content .modal-header .close {
+  float:left;
+  width:20px;
+  height:20px;
+  border:1px solid #FFF;
+  opacity:.4;
+  border-radius:10px;
+  text-shadow:none;
+  font-size:18px;
+  line-height:14px;
+  color:#FFF;
+  font-weight:lighter;
+  transition:opacity .3s ease;
+}
+.modal-content .modal-header .close:hover {
+  opacity:.9;
+}
+.modal-content p {
+  font-size:16px;
+  text-align:center;
+  padding:10px 30px;
+}
+.modal-content form label {
+  font-weight:lighter;
+  margin-bottom:10px;
+  font-size:13px;
+}
+.modal-content form input,
+.modal-content form textarea {
+  border-radius:0px;
+}
+.modal-content .btn-yellow {
+  width:180px;
+  height:47px;
+  font-size:19px;
+  margin:30px auto 40px auto;
+}
+/* boton con fondo amarillo */
+.btn-yellow {
+  background-color:#fbde44;
+  color:#000;
+  border-color:#fbde44;
+  font-weight:bold;
+  transition:background-color .3s ease;
+}
+#main-content #free-inspection .text-wrapper a.btn:hover,
+.btn-yellow:hover {
+  background-color:#FFEC00;
+  color:#000;
+}
+/* para que no salga el border azul al hacer click en un link o botón */
+a:focus, .btn:focus, .btn:active {
+  outline:none;
+}
+
+/* PAGINA DE BLOG */
+
+#main-content.blog {
+  position:relative;
+  padding-top:100px;
+  
+  /* PARALLAX EFFECT */
+  perspective: 1px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#main-content.blog #blog-bg {
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:-1300px;
+  
+  background-image:url('../images/foto-fondo-blog.jpg');
+  background-size:cover;
+  background-position:0px center;
+  background-repeat:no-repeat;
+
+/*  PARALLAX */
+  transform: translateZ(-2px) scale(3);
+  -o-transform: translateZ(-2px) scale(3);
+  -ms-transform: translateZ(-2px) scale(3);
+  -moz-transform: translateZ(-2px) scale(3);
+  -webkit-transform: translateZ(-2px) scale(3);
+  
+}
+/*  PARALLAX */
+#blog-wrapper {
+  transform: translateZ(0);
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.blog-post {
+  background-color:rgba(255,255,255,.9);
+  text-align:left;
+  margin:15px 0px;
+  width:100%;
+  padding:10px 40px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+  -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+
+}
+.blog-post .content,
+.blog-post p {
+  text-align:left;
+  color:#232323;
+  font-size:18px;
+  padding:15px 0;
+  margin-bottom:20px;
+}
+.blog-post p.intro {
+  font-size:20px;
+  color:#222;
+  padding:20px 0;
+  text-align:center;
+}
+.blog-post span {
+  display:block;
+  color:rgba(35,35,35,.37);
+  font-size:15px;
+}
+.blog-post h3 {
+  color:#3C3C3C;
+  font-size:30px;
+  font-weight:bold;
+  margin:5px 0 10px 0;
+}
+.blog-post h3 a {
+  color:#3c3c3c;
+  text-decoration:underline;
+}
+.blog-post h3 a:hover {
+  color:#555;
+}
+.blog-post a.go-back {
+  display:block;
+  color:rgba(35,35,35,.37);
+  font-size:15px;
+  text-align:left;
+  margin-bottom:20px;
+}
+.blog-post .read-more {
+  display:block;
+  color:rgba(35,35,35,.37);
+  font-size:15px;
+  text-align:right;
+  margin-bottom:20px;
+}
+.blog-post .image-wrapper {
+  text-align:center;
+}
+.blog-post .image-wrapper img {
+  margin:0 auto;
+  width:100%;
+  box-shadow:0px 0px 5px rgba(20,20,20,.6);
+}
