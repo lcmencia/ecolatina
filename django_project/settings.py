@@ -29,6 +29,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'usuario',
     'roedores',
+    'presupuesto',
 
 )
 
@@ -115,6 +116,7 @@ def ip_addresses():
         for x in (netifaces.AF_INET, netifaces.AF_INET6):
             if x in addrs:
                 ip_list.append(addrs[x][0]['addr'])
+    ip_list.append('ecolatina.com.py')
     return ip_list
 
 # Discover our IP address
@@ -123,3 +125,8 @@ ALLOWED_HOSTS = ip_addresses()
 LOCATION_FIELD = {
     'map.provider': 'openstreetmap',
 }
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'info@ecolatinapy.com'
+# EMAIL_HOST_PASSWORD = ''

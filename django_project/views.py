@@ -14,11 +14,26 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import datetime, time
 from dateutil.relativedelta import relativedelta
-from django.views.generic import TemplateView
+
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+
+from presupuesto.models import PresupuestoForm
+
+def send_email(request):
+    if request.method == 'POST':
+        form = PresupuestoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+
+            return redirect('/')
+    else:
+        form = PresupuestoForm()
+
+    return render(request, 'home.html', {'form': form})
 
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
 
 @ensure_csrf_cookie
 def authentication(request):
