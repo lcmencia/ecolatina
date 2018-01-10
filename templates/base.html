@@ -88,9 +88,11 @@
                     <!-- BEGIN NAVBAR USER -->
                     <div class="nav-item dropdown ks-user">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="ks-avatar">
-                                <img src="{{ user.cliente.avatar.url }}" width="36" height="36">
-                            </span>
+                            {% if user.cliente.avatar.url %}
+                                <span class="ks-avatar">
+                                    <img src="{{ user.cliente.avatar.url }}" width="36" height="36">
+                                </span>
+                            {% endif %}
                             <span class="ks-info">
                                 <span class="ks-name">{% if user.is_authenticated %}{{ user.username }}{% endif %}</span>
                                 <span class="ks-description">Super Admin</span>
@@ -121,14 +123,7 @@
             </nav>
             <!-- END NAVBAR ACTIONS TOGGLER -->
 
-            <!-- BEGIN NAVBAR MENU TOGGLER -->
-            <nav class="nav navbar-nav ks-navbar-menu-toggle">
-                <a class="nav-item nav-link" href="#">
-                    <span class="la la-th ks-icon ks-open"></span>
-                    <span class="la la-close ks-icon ks-close"></span>
-                </a>
-            </nav>
-            <!-- END NAVBAR MENU TOGGLER -->
+           
         </div>
         <!-- END MENUS -->
         <!-- END HEADER INNER -->
