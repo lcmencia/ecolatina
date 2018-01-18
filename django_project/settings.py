@@ -107,8 +107,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/img')
 import os
 import netifaces
 
-# Find out what the IP addresses are at run time
-# This is necessary because otherwise Gunicorn will reject the connections
+Find out what the IP addresses are at run time
+This is necessary because otherwise Gunicorn will reject the connections
 def ip_addresses():
     ip_list = []
     for interface in netifaces.interfaces():
@@ -126,8 +126,8 @@ ALLOWED_HOSTS = ip_addresses()
 LOCATION_FIELD = {
     'map.provider': 'openstreetmap',
 }
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'info@ecolatinapy.com'
-# EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'info@ecolatinapy.com'
+EMAIL_HOST_PASSWORD = ''

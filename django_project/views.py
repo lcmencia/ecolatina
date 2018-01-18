@@ -16,7 +16,7 @@ import datetime, time
 from dateutil.relativedelta import relativedelta
 
 from django.http import HttpResponseRedirect
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 
 from presupuesto.models import PresupuestoForm
 
@@ -25,8 +25,11 @@ def send_email(request):
         form = PresupuestoForm(request.POST)
         if form.is_valid():
             form.save()
-            print(form)
-
+            data = form.cleaned_data
+            body = data['empresa'] + '\n' + data['nombre'] + '\n' + data['telefono'] + '\n' + data['mensaje']
+            asunto = data['email']
+            email = EmailMessage(asunto , body, to=['info@ecolatinapy.com'])
+            email.send()
             return redirect('/')
     else:
         form = PresupuestoForm()
