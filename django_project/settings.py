@@ -30,6 +30,7 @@ INSTALLED_APPS = (
     'usuario',
     'roedores',
     'presupuesto',
+    'blog',
 
 )
 
@@ -81,7 +82,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Asuncion'
 
 USE_I18N = True
 
@@ -99,7 +100,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/assets/img')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # Allow Django from all hosts. This snippet is installed from
 # /var/lib/digitalocean/allow_hosts.py

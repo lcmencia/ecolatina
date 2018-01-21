@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import logout
@@ -6,10 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 from usuario.models import *
 from roedores.models import *
+from blog.models import *
 # Charts
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse
-
+from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import datetime, time
@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta
 
 from django.http import HttpResponseRedirect
 from django.core.mail import EmailMessage
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from presupuesto.models import PresupuestoForm
 
 def send_email(request):
@@ -36,6 +36,44 @@ def send_email(request):
 
     return render(request, 'home.html', {'form': form})
 
+def blog_list(request):
+    if request.method == 'POST':
+        form = PresupuestoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            data = form.cleaned_data
+            body = data['empresa'] + '\n' + data['nombre'] + '\n' + data['telefono'] + '\n' + data['mensaje']
+            asunto = data['email']
+            email = EmailMessage(asunto , body, to=['info@ecolatinapy.com'])
+            email.send()
+            return redirect('/')
+    else:
+        form = PresupuestoForm()
+
+    queryset_list = Post.objects.all().order_by("updated")
+    paginator = Paginator(queryset_list, 2)
+    
+    page = request.GET.get('page')
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        queryset = paginator.page(1)
+    except EmptyPage:
+        queryset = paginator.page(paginator.num_pages)
+
+    context = {
+        "object_list": queryset,
+        'form': form,
+    }
+    return render(request, "blog.html", context)
+
+def blog_detail(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
+    context = {
+        "instance":instance,
+        
+    }
+    return render(request, "blog_detail.html", context)
 
 
 @ensure_csrf_cookie
