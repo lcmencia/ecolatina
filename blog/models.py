@@ -2,11 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 import string
 import random
 
 # Create your models here.
-def random_generator(size=4, chars=string.ascii_uppercase + string.digits):
+def random_generator(size=2, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 def upload_location(instance, filename):
     filebase, extension = filename.split(".")
@@ -18,7 +19,7 @@ class Post(models.Model):
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, width_field="width_field", height_field="height_field")
     width_field = models.IntegerField(default=0)
     height_field = models.IntegerField(default=0)
-    content = models.TextField()
+    content = RichTextField()
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -29,8 +30,9 @@ class Post(models.Model):
         return reverse("blog_detail", kwargs={"slug":self.slug})
 
     def save(self, *args, **kwargs):
-        self.slug = "%s-%s" %(random_generator(), slugify(self.title))
+        if not self.id:
+            self.slug = "%s-%s" %(slugify(self.title),random_generator())
         super(Post, self).save(*args, **kwargs)
 
 
-
+            

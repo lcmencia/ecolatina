@@ -130,9 +130,8 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-10 col-sm-offset-1 col-xl-4 col-xl-offset-4" style="margin-top: 70px;">
-        <h1 style="-webkit-text-fill-color:black;
-        -webkit-text-stroke: 1px #fbde44;">BLOG</h1> <br>
+    <div class="col-sm-10 col-sm-offset-1 col-xl-4 col-xl-offset-4" style="margin-top: 90px;">
+        <h1>BLOG</h1> <br>
       {%for obj in object_list %}
       <div class="row">
         <div class="col-sm-12">
@@ -141,11 +140,10 @@
                 <img src='{{ obj.image.url }}' class='img-responsive' />
               {% endif %}
             <div class="caption">
-              <h2><a href='{{ obj.get_absolute_url }}' style="-webkit-text-fill-color: #fbde44;
-                -webkit-text-stroke: 0.5px black;">{{ obj.title }}</a></h2>
+              <h2><a href='{{ obj.get_absolute_url }}' style="">{{ obj.title }}</a></h2>
               <small>Publicado hace {{ obj.timestamp|timesince }}</small>
-              <p>{{ obj.content|linebreaks|truncatechars:420}} </p>
-              <p><a href='{{ obj.get_absolute_url }}' class="btn btn-primary" role="button" style="background:#fbde44;color:black;border-color:black;">Ver más</a></p>
+              <p>{{ obj.content|safe|truncatechars:420}} </p>
+              <p><a href='{{ obj.get_absolute_url }}' class="btn btn-primary" role="button" style="">Ver más</a></p>
             </div>
           </div>
         </div>
@@ -157,7 +155,7 @@
       <div class="pagination">
         <span class="step-links">
           {% if object_list.has_previous %}
-            <a href="?page={{ object_list.previous_page_number }}" >Antes</a>
+            <a href="?page={{ object_list.previous_page_number }}" class="btn btn-primary" role="button" >Anterior</a>
           {% endif %}
 
           <span class="current">
@@ -165,7 +163,7 @@
           </span>
 
           {% if object_list.has_next %}
-            <a href="?page={{ object_list.next_page_number }}" >Siguiente</a>
+            <a href="?page={{ object_list.next_page_number }}" class="btn btn-primary" role="button" >Siguiente</a>
           {% endif %}
         </span>
       </div>

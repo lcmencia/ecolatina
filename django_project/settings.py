@@ -27,6 +27,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
     'rest_framework',
+    'ckeditor',
+    'ckeditor_uploader',
     'usuario',
     'roedores',
     'presupuesto',
@@ -101,9 +103,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Allow Django from all hosts. This snippet is installed from
-# /var/lib/digitalocean/allow_hosts.py
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+       
+    }
+}
 
 import os
 import netifaces
@@ -119,7 +126,6 @@ def ip_addresses():
     ip_list.append('ecolatina.com.py')
     return ip_list
 
-# Discover our IP address
 ALLOWED_HOSTS = ip_addresses()
 
 LOCATION_FIELD = {

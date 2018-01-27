@@ -11,3 +11,4 @@ roedores/__pycache__/
 roedores/migrations/
 usuario/__pycache__/
 usuario/migrations/
+staticfiles/

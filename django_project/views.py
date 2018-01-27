@@ -51,7 +51,7 @@ def blog_list(request):
         form = PresupuestoForm()
 
     queryset_list = Post.objects.all().order_by("updated")
-    paginator = Paginator(queryset_list, 2)
+    paginator = Paginator(queryset_list, 20)
     
     page = request.GET.get('page')
     try:
