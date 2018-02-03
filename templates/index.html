@@ -132,10 +132,11 @@
                                         <table class="table ks-payment-table-invoicing">
                                             <tr>
                                                 <th width="1">Estacion</th>
-                                                <th>Sector</th>
-                                                <th>Propiedad</th>
-                                                <th>Fecha</th>
-                                                <th width="1">Estado</th>
+                                                <th width="1">Sector</th>
+                                                <th width="1">Propiedad</th>
+                                                <th width="1">Fecha</th>
+                                                <th width="1">Reposición</th>
+                                                <th width="1">Incidencia</th>
                                             </tr>
                                             {% for control in controles_recientes %}
                                             <tr>
@@ -143,10 +144,8 @@
                                                 <td>{{ control.estacion.sector }}</td>
                                                 <td>{{ control.estacion.sector.propiedad }}</td>
                                                 <td>{{ control.inicio }}</td>
-                                                <td>{% for estado in control.estado.all %}
-                                                    {{ estado }}
-                                                    {% if not forloop.last %}, {% endif %}
-                                                  {% endfor %}</td>
+                                                <td>{{ control.e_capturado }}</td>
+                                                <td>{{ control.e_capturado }}</td>
                                                
                                             </tr>
                                             {% endfor %}
@@ -192,7 +191,7 @@
                             <div class="col-xl-4">
                                 <div class="card ks-card-widget ks-widget-chart-orders">
                                     <h5 class="card-header">
-                                        Orders
+                                        Roedores Capturados
 
                                         <div class="ks-controls">
                                             <a href="#" class="ks-control-link">January 2017</a>

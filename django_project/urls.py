@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^blog/(?P<slug>[-\w]+)/$',  views.blog_detail, name='blog_detail'),
     url(r'^panel/$',  views.index_view),
     url(r'^control/$',  views.control_view),
-    url(r'^property/$',  views.property_view),
+    url(r'^property/$',  views.property_view, name='property'),
     url(r'^login/$',views.authentication, name='authentication'),
     url(r'^logout/$',views.logout_view, name='logout'),
     

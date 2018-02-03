@@ -7,21 +7,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="Ecolatina es una empresa de control de plagas">
-   
+    <meta name="title" content="{{ instance.title }} – Ecolatina">
     
+    <meta property="og:title" content="{{ instance.title }} – Ecolatina" />
+	  <meta property="og:type" content="article" />
+	  <meta property="og:image" content="https://ecolatina.com.py{{ instance.image.url }}" />
+    <meta property="og:url" content="https://ecolatina.com.py/blog/{{ instance.slug }}" />
+    <meta property="og:description" content="{{ instance.preview_content }}" />
+
     <meta name="google-site-verification" content="41gqztnhGE963EOkjF-1GC-m2PCpDsexeVEH0F4j9FA" />
     
     <link rel="icon" href="{% static 'home/images/favicon.png'%}">
 
-    <title>Ecolatina - Control de plagas</title>
+    <title>{{ instance.title }} – Ecolatina</title>
 
     <!-- Bootstrap core CSS -->
    
     <link rel="stylesheet" type="text/css" href="{% static "home/css/bootstrap.min.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/ecolatina.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/responsiveness.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/blog.css" %}" />
     <!-- Facebook Pixel Code -->
 	<script>
 	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -131,32 +136,48 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-10 col-sm-offset-1" style="margin-top: 85px;">
-        <h1 style="">{{ instance.title }}</h1> <br>
-      
+
+    <div class="container">
+
       <div class="row">
-        <div class="col-sm-12">
-          <div class="thumbnail">
-              {% if instance.image %}
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">{{ instance.title }}</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#">{{ instance.author }}</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p>Publicado hace {{ instance.timestamp|timesince }}</p>
+
+          <hr>
+
+          <!-- Preview Image -->
+          {% if instance.image %}
                 <img src='{{ instance.image.url }}' class='img-responsive' />
-              {% endif %}
-            <div class="caption">
-              <small>Publicado hace {{ instance.timestamp|timesince }}</small><br><br>
-              <p style="text-align : left;font-size: 1.25em;color: #1c3643;">{{ instance.content|safe }} </p>
-            </div>
-          </div>
-        </div>
-        <hr/>
+          {% endif %}
+
+          <hr>
+
+          <!-- Post Content -->
+          <p style="text-align : left;font-size: 1.25em;color: #1c3643;">{{ instance.content|safe }} </p>
+          <hr>
+
+
       </div>
-        
-      
+      <!-- /.row -->
 
     </div>
 
-    
-
-
-
+  </div> 
 
 
 

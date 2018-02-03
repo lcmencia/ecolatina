@@ -50,8 +50,8 @@ def blog_list(request):
     else:
         form = PresupuestoForm()
 
-    queryset_list = Post.objects.all().order_by("updated")
-    paginator = Paginator(queryset_list, 20)
+    queryset_list = Post.objects.all().order_by("timestamp")
+    paginator = Paginator(queryset_list, 3)
     
     page = request.GET.get('page')
     try:
@@ -68,9 +68,22 @@ def blog_list(request):
     return render(request, "blog.html", context)
 
 def blog_detail(request, slug=None):
+    if request.method == 'POST':
+        form = PresupuestoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            data = form.cleaned_data
+            body = data['empresa'] + '\n' + data['nombre'] + '\n' + data['telefono'] + '\n' + data['mensaje']
+            asunto = data['email']
+            email = EmailMessage(asunto , body, to=['info@ecolatinapy.com'])
+            email.send()
+            return redirect('/')
+    else:
+        form = PresupuestoForm()
     instance = get_object_or_404(Post, slug=slug)
     context = {
         "instance":instance,
+        'form': form
         
     }
     return render(request, "blog_detail.html", context)

@@ -114,7 +114,6 @@ CKEDITOR_CONFIGS = {
 
 import os
 import netifaces
-
 def ip_addresses():
     ip_list = []
     for interface in netifaces.interfaces():
@@ -125,7 +124,6 @@ def ip_addresses():
     ip_list.append('www.ecolatina.com.py')
     ip_list.append('ecolatina.com.py')
     return ip_list
-
 ALLOWED_HOSTS = ip_addresses()
 
 LOCATION_FIELD = {

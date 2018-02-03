@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "home/css/bootstrap.min.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/ecolatina.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/responsiveness.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "home/css/blog.css" %}" />
     <!-- Facebook Pixel Code -->
 	<script>
 	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -130,45 +131,53 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-10 col-sm-offset-1 col-xl-4 col-xl-offset-4" style="margin-top: 90px;">
-        <h1>BLOG</h1> <br>
-      {%for obj in object_list %}
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="thumbnail">
+
+  <div class="container" style="">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>BLOG</h1>
+        {%for obj in object_list %}
+          <div class="card mb-4 thumbnail"> 
               {% if obj.image %}
-                <img src='{{ obj.image.url }}' class='img-responsive' />
+                <img src="{{ obj.image.url }}" alt="" class="card-img-top"> 
               {% endif %}
-            <div class="caption">
-              <h2><a href='{{ obj.get_absolute_url }}' style="">{{ obj.title }}</a></h2>
-              <small>Publicado hace {{ obj.timestamp|timesince }}</small>
-              <p>{{ obj.content|safe|truncatechars:420}} </p>
-              <p><a href='{{ obj.get_absolute_url }}' class="btn btn-primary" role="button" style="">Ver más</a></p>
+            <div class="card-body">
+              <h2 class="card-title">{{ obj.title }}</h2>
+              <p class="card-text">{{ obj.content|safe|truncatechars:420}}</p>
+              <a href="{{ obj.get_absolute_url }}" class="btn btn-primary">Ver mas →</a>
             </div>
+            <div class="card-footer text-muted"><small>Publicado hace {{ obj.timestamp|timesince }}</small></div>
           </div>
-        </div>
-        <hr/>
-      </div>
-        
-      {% endfor %}
-
-      <div class="pagination">
-        <span class="step-links">
-          {% if object_list.has_previous %}
-            <a href="?page={{ object_list.previous_page_number }}" class="btn btn-primary" role="button" >Anterior</a>
-          {% endif %}
-
-          <span class="current">
-            Página {{ object_list.number }} de {{ object_list.paginator.num_pages }}
+         {% endfor %}
+        <div class="pagination justify-content-center mb-4">
+          <span class="step-links">
+              
+                  {% if object_list.has_previous %}
+                  <a href="?page={{ object_list.previous_page_number }}" class="page-item page-link">← Anterior</a>
+                  {% endif %}
+              
+              
+                  {% if object_list.has_next %}
+                  <a href="?page={{ object_list.next_page_number }}" class="page-item page-link" >Siguiente →</a>
+                  {% endif %}
+              
+              <span class="current">
+                  Página {{ object_list.number }} de {{ object_list.paginator.num_pages }}
+                </span>
           </span>
+        </div>
 
-          {% if object_list.has_next %}
-            <a href="?page={{ object_list.next_page_number }}" class="btn btn-primary" role="button" >Siguiente</a>
-          {% endif %}
-        </span>
+       
+
       </div>
+    </div> 
+  </div>  
 
-    </div>
+
+
+
+
+    
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
