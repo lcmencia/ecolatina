@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
