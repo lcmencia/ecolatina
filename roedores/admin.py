@@ -12,7 +12,7 @@ class ControlInline(admin.StackedInline):
 
 class AdminEstacion(admin.ModelAdmin):
     inlines = [ControlInline]
-    list_display = ('id','sector','propiedad', 'cliente', 'fecha', )
+    list_display = ('id','sector', 'fecha', )
     icon = '<i class="material-icons">bug_report</i>'
     raw_id_fields = ('sector',)
     

@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 
 class Estacion(models.Model):
     sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
-    propiedad = models.IntegerField(editable = False)
-    cliente = models.IntegerField(editable = False)
-    usuario = models.IntegerField(editable = False)
     fecha = models.DateTimeField(blank=True, null=True)
     instalador = models.ManyToManyField(Funcionario)
     
@@ -18,16 +15,7 @@ class Estacion(models.Model):
     def __str__(self):
         return str(self.id)
 
-    def save(self, *args, **kwargs):
-        _cebo = self.sector
-        _sector = Sector.objects.get(pk=_cebo.id)
-        _propiedad = _sector.propiedad
-        self.propiedad = _propiedad.id
-        _cliente = _propiedad.cliente
-        self.cliente = _cliente.id
-        _Cliente = Cliente.objects.get(pk=_cliente.id)
-        self.usuario = _Cliente.usuario.id
-        super(Estacion, self).save(*args, **kwargs)
+    
 
 
 class Control(models.Model):
