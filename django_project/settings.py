@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -112,19 +113,19 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-import os
-import netifaces
-def ip_addresses():
-    ip_list = []
-    for interface in netifaces.interfaces():
-        addrs = netifaces.ifaddresses(interface)
-        for x in (netifaces.AF_INET, netifaces.AF_INET6):
-            if x in addrs:
-                ip_list.append(addrs[x][0]['addr'])
-    ip_list.append('www.ecolatina.com.py')
-    ip_list.append('ecolatina.com.py')
-    return ip_list
-ALLOWED_HOSTS = ip_addresses()
+# import os
+# import netifaces
+# def ip_addresses():
+#     ip_list = []
+#     for interface in netifaces.interfaces():
+#         addrs = netifaces.ifaddresses(interface)
+#         for x in (netifaces.AF_INET, netifaces.AF_INET6):
+#             if x in addrs:
+#                 ip_list.append(addrs[x][0]['addr'])
+#     ip_list.append('www.ecolatina.com.py')
+#     ip_list.append('ecolatina.com.py')
+#     return ip_list
+# ALLOWED_HOSTS = ip_addresses()
 
 
 

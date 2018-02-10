@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -114,7 +115,7 @@ def logout_view(request):
 def index_view(request):
     propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
     totalPropiedades = propiedades.count()
-    cebos = Estacion.objects.filter(usuario=request.user.id)
+    cebos = Estacion.objects.filter(sector__propiedad__cliente__usuario=request.user.id)
     controles = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)
     controles_recientes = controles[:3]
     capturados = controles.filter(e_capturado=True) 
