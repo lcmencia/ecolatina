@@ -2,6 +2,7 @@ from django.db import models
 from django.forms import ModelForm
 from django import forms
 
+
 class Presupuesto(models.Model):
     nombre = models.CharField(max_length=100,blank=True, null=True)
     telefono = models.CharField(max_length=100,blank=True, null=True)
@@ -31,4 +32,5 @@ class PresupuestoForm(ModelForm):
             'empresa': forms.TextInput(attrs={'class':'form-control'}),
             'email': forms.TextInput(attrs={'class':'form-control'}),
             'mensaje': forms.Textarea(attrs={'class':'form-control'}), 
-         } 
+         }
+

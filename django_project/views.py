@@ -4,8 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
-from usuario.models import *
-from roedores.models import *
+from cliente.models import *
 from blog.models import *
 # Charts
 from django.contrib.auth import get_user_model
