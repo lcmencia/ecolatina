@@ -41,7 +41,7 @@
                                                 <input type="text" name="daterange" value="" class="form-control ks-daterange col-xl-4">
                                                 <input type="text" id="inicio" name="inicio" readonly="true" style="display: none">
                                                 <input type="text" id="fin" name="fin" readonly="true" value="31/12/2040" style="display: none">
-                                                <button type="submit" class="input-group-addon">
+                                                <button type="submit" class="input-group-addon" style="width:121px;">
                                                     <span class="la la-filter"><p style="display: inline; font-family: 'Montserrat', sans-serif">Filtrar</p></span>
                                                 </button>
                                         </div>
@@ -72,10 +72,11 @@
                                                 <th>#</th>
                                                 <th>Sector</th>
                                                 <th>Propiedad</th>
+                                                <th>Fecha</th>
                                                 <th>Inicio</th>
                                                 <th>Fin</th>
-                                                <th>Estado</th>
-                                                <th>Accion</th>
+                                                <th>Reposición</th>
+                                                <th>Incidencia</th>
                                                 <th>Operador</th>
                                                 <th>Instalador</th>
                                                 <th>Observaciones</th>
@@ -87,6 +88,7 @@
                                                     <th>#</th>
                                                     <th>Sector</th>
                                                     <th>Propiedad</th>
+                                                    <th>Fecha</th>
                                                     <th>Inicio</th>
                                                     <th>Fin</th>
                                                     <th>Estado</th>
@@ -102,20 +104,43 @@
                                             <tr>
                                                 <td>{{ control.estacion }}</td>
                                                 <td>{{ control.estacion.sector }}</td>
-                                                <td>{{ control.estacion.sector.propiedad }}</td>                                                
-                                                <td>{{ control.inicio }}</td>
-                                                <td>{{ control.fin }}</td>
-                                                <td>{% for estado in control.estado.all %}
-                                                    {{ estado }}
+                                                <td>{{ control.estacion.sector.propiedad }}</td>
+                                                <td style="text-align: center;">{{ control.fecha }}</td>                                            
+                                                <td style="text-align: center;">{{ control.inicio }}</td>
+                                                <td style="text-align: center;">{{ control.fin }}</td>
+                                                <td style="text-align: center;">
+                                                    {% if control.a_reposicion or contol.a_reemplazo %}
+                                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí
+                                                    {% else %}
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No
+                                                    {% endif %}
+                                                </td style="text-align: center;">
+                                                <td style="text-align: center;">
+                                                    {% if control.e_ausencia or contol.e_consumido or contol.e_deteriorado or e_pa_deteriorada or e_no_acceso %}
+                                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí
+                                                    {% else %}
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% for operador in control.operador.all %}
+                                                    {{ operador }}
                                                     {% if not forloop.last %}, {% endif %}
-                                                  {% endfor %}</td>
-                                                <td>{% for accion in control.accion.all %}
-                                                    {{ accion }}
+                                                    {% endfor %}
+                                                </td>
+                                                <td>
+                                                    {% for instalador in control.estacion.instalador.all %}
+                                                    {{ instalador }}
                                                     {% if not forloop.last %}, {% endif %}
-                                                  {% endfor %}</td>
-                                                <td>{{ control.operador }}</td>
-                                                <td>{{ control.estacion.instalador }}</td>
-                                                <td>{{ control.observacion }}</td>  
+                                                    {% endfor %}
+                                                </td>
+                                                <td style="text-align: center;">
+                                                    {% if control.observacion %}
+                                                        {{ control.observacion }}
+                                                    {% else %}
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    {% endif %}
+                                                </td>  
                                                 
                                             </tr>
                                             {% endfor %}

@@ -144,8 +144,20 @@
                                                 <td>{{ control.estacion.sector }}</td>
                                                 <td>{{ control.estacion.sector.propiedad }}</td>
                                                 <td>{{ control.inicio }}</td>
-                                                <td>{{ control.e_capturado }}</td>
-                                                <td>{{ control.e_capturado }}</td>
+                                                <td>
+                                                    {% if control.a_reposicion or contol.a_reemplazo %}
+                                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí
+                                                    {% else %}
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if control.e_ausencia or contol.e_consumido or contol.e_deteriorado or e_pa_deteriorada or e_no_acceso %}
+                                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí
+                                                    {% else %}
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No
+                                                    {% endif %}
+                                                </td>
                                                
                                             </tr>
                                             {% endfor %}

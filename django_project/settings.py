@@ -126,6 +126,9 @@ def ip_addresses():
     return ip_list
 ALLOWED_HOSTS = ip_addresses()
 
+
+
+
 LOCATION_FIELD = {
     'map.provider': 'openstreetmap',
 }

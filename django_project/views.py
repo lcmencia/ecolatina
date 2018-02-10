@@ -92,7 +92,7 @@ def blog_detail(request, slug=None):
 @ensure_csrf_cookie
 def authentication(request):
     if request.user.is_authenticated():
-        return redirect('/')
+        return HttpResponseRedirect(reverse('panel'))
     else:
         if request.method == 'POST':
             action = request.POST.get('action', None)
@@ -101,7 +101,7 @@ def authentication(request):
 
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return HttpResponseRedirect(reverse('panel'))
         return render(request, 'login.html', {})
 
 @login_required(None, 'login', '/login/')
@@ -142,6 +142,15 @@ def property_view(request):
     propiedades = Propiedad.objects.select_related("cliente").filter(cliente__usuario=request.user.id)
     return render(request, 'propiedad.html',{
     'propiedades':propiedades,
+    })
+
+@login_required(None,'login','/login/')
+def sector_view(request, id=None):
+    sectores = Sector.objects.filter(propiedad=id)
+    propiedad = Propiedad.objects.get(pk=id)
+    return render(request, 'sector.html',{
+    'sectores':sectores,
+    'propiedad': propiedad
     })
 
 
