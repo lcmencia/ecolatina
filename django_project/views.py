@@ -116,7 +116,7 @@ def index_view(request):
     propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
     totalPropiedades = propiedades.count()
     cebos = Estacion.objects.filter(sector__propiedad__cliente__usuario=request.user.id)
-    controles = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)
+    controles = Control.objects.filter(estacion__sector__propiedad__cliente__usuario=request.user.id)
     controles_recientes = controles[:3]
     capturados = controles.filter(e_capturado=True) 
     totalPropiedades = propiedades.count()
