@@ -851,6 +851,7 @@ input[type="submit"], button {
         width: auto;
         max-width: 480px;
         margin: 50px auto;
+        min-width: 200px;
     }
 
     .login #header,
