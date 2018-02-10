@@ -66,6 +66,7 @@ class Sector(models.Model):
 
 class Estacion(models.Model):
     sector = models.ForeignKey(Sector, on_delete=models.CASCADE)
+    etiqueta = models.CharField(max_length=6,blank=True, null=True)
     fecha = models.DateTimeField(blank=True, null=True)
     instalador = models.ManyToManyField(Funcionario)
     
