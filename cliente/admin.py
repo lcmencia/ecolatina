@@ -3,12 +3,12 @@ from django.contrib import admin
 from .models import *
 
 
-class EstacionInline(admin.StackedInline):
-    model = Estacion
-    extra = 0
+# class EstacionInline(admin.StackedInline):
+#     model = Estacion
+#     extra = 0
 
 class AdminSector(admin.ModelAdmin):
-    inlines = [EstacionInline]
+    # inlines = [EstacionInline]
     list_display = ('propiedad', 'nombre')
     icon = '<i class="material-icons">work</i>'
     
