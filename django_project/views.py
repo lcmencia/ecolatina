@@ -114,6 +114,7 @@ def logout_view(request):
 @login_required(None,'login','/login/')
 def index_view(request):
     propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
+    cliente = Cliente.objects.get(usuario=request.user.id)
     totalPropiedades = propiedades.count()
     cebos = Estacion.objects.filter(sector__propiedad__cliente__usuario=request.user.id)
     controles = Control.objects.filter(estacion__sector__propiedad__cliente__usuario=request.user.id)
@@ -124,6 +125,7 @@ def index_view(request):
     totalCapturados = capturados.count()
     return render(request, 'index.html',{
     'propiedades':propiedades,
+    'cliente': cliente,
     'totalPropiedades':totalPropiedades,
     'totalCebos': totalCebos,
     'totalCapturados': totalCapturados,
@@ -132,7 +134,7 @@ def index_view(request):
 
 @login_required(None,'login','/login/')
 def control_view(request):
-    controles = Control.objects.select_related("estacion").filter(estacion__usuario=request.user.id)
+    controles = Control.objects.filter(estacion__sector__propiedad__cliente__usuario=request.user.id)
     return render(request, 'control.html',{
     'controles':controles,
     })
@@ -152,6 +154,16 @@ def sector_view(request, id=None):
     'sectores':sectores,
     'propiedad': propiedad
     })
+
+@login_required(None,'login','/login/')
+def station_view(request, id=None):
+    estaciones = Estacion.objects.filter(sector=id)
+    sector = Sector.objects.get(pk=id)
+    return render(request, 'station.html',{
+    'sector':sector,
+    'estaciones': estaciones
+    })
+
 
 
 

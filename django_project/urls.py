@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^control/$',  views.control_view, name='control'),
     url(r'^property/$',  views.property_view, name='property'),
     url(r'^sector/(?P<id>\d+)/$',  views.sector_view, name='sector'),
+    url(r'^station/(?P<id>\d+)/$',  views.station_view, name='station'),
     url(r'^login/$',views.authentication, name='authentication'),
     url(r'^logout/$',views.logout_view, name='logout'),
     
