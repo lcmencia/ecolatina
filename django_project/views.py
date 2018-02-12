@@ -124,7 +124,6 @@ def index_view(request):
     totalCapturados = capturados.count()
     return render(request, 'index.html',{
     'propiedades':propiedades,
-    'cliente': cliente,
     'totalPropiedades':totalPropiedades,
     'totalCebos': totalCebos,
     'totalCapturados': totalCapturados,
