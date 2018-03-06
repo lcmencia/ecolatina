@@ -47,16 +47,16 @@ class Propiedad(models.Model):
         verbose_name_plural = "Propiedades"
 
     def __str__(self):
-        return self.nombre
+        propiedad = self.cliente.razon_social+"-"+self.nombre
+        return propiedad
 
-    
 
 class Sector(models.Model):
     propiedad = models.ForeignKey(Propiedad, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=255)
     imagen = models.ImageField('Imagen del sector', upload_to='sector', blank=True, null=True)
     observacion = models.TextField(blank=True, null=True)
-    
+
     class Meta:
         verbose_name_plural = "Sectores"
 
