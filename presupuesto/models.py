@@ -5,9 +5,9 @@ from django import forms
 
 
 class Presupuesto(models.Model):
-    nombre = models.CharField(max_length=100,blank=True, null=True)
-    telefono = models.CharField(max_length=100,blank=True, null=True)
-    empresa = models.CharField(max_length=100,blank=True, null=True)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
+    telefono = models.CharField(max_length=100, blank=True, null=True)
+    empresa = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField()
     mensaje = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -16,8 +16,9 @@ class Presupuesto(models.Model):
     def __str__(self):
         return str(self.id)
 
+
 class PresupuestoForm(ModelForm):
-    
+
     class Meta:
         model = Presupuesto
         fields = [
@@ -28,10 +29,9 @@ class PresupuestoForm(ModelForm):
             'mensaje',
         ]
         widgets = {
-            'nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'telefono': forms.TextInput(attrs={'class':'form-control'}),
-            'empresa': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.TextInput(attrs={'class':'form-control'}),
-            'mensaje': forms.Textarea(attrs={'class':'form-control'}), 
-         }
-
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control'}),
+            'empresa': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'mensaje': forms.Textarea(attrs={'class': 'form-control'}),
+        }

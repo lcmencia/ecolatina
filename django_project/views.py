@@ -139,16 +139,6 @@ def index_view(request):
         'controles_recientes': controles_recientes,
     })
 
-
-@login_required(None, 'login', '/login/')
-def control_view(request):
-    controles = Control.objects.filter(
-        estacion__sector__propiedad__cliente__usuario=request.user.id)
-    return render(request, 'control.html', {
-        'controles': controles,
-    })
-
-
 @login_required(None, 'login', '/login/')
 def property_view(request):
     propiedades = Propiedad.objects.select_related(
@@ -175,6 +165,25 @@ def station_view(request, id=None):
     return render(request, 'station.html', {
         'sector': sector,
         'estaciones': estaciones
+    })
+
+
+@login_required(None, 'login', '/login/')
+def control_view(request, id=None):
+    controles = Control.objects.filter(estacion=id)
+    estacion = Estacion.objects.get(pk=id)
+    return render(request, 'control.html', {
+        'estacion': estacion,
+        'controles': controles
+    })
+
+
+@login_required(None, 'login', '/login/')
+def all_control_view(request):
+    controles = Control.objects.filter(
+        estacion__sector__propiedad__cliente__usuario=request.user.id)
+    return render(request, 'all_control.html', {
+        'controles': controles,
     })
 
 
