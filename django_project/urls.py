@@ -20,7 +20,8 @@ urlpatterns = [
     url(r'^station/(?P<id>\d+)/$',  views.station_view, name='station'),
     url(r'^login/$',views.authentication, name='authentication'),
     url(r'^logout/$',views.logout_view, name='logout'),
-    
+    url(r'^report/$', views.GeneratePdf.as_view()),
+
     url(r'^api/chart/data/$', views.ChartData.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Title</title>
+    <style type="text/css">
+        table {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        border: 1px solid #ddd;
+        table-layout: auto;
+        width: 100%;  
+        }
+
+        caption {
+        text-align: left;
+        color: silver;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 5px;
+        }
+
+        thead {
+        background: SteelBlue;
+        color: black;
+        }
+
+        th,
+        td {
+        padding: 5px 10px;
+        }
+
+        tbody tr:nth-child(even) {
+        background: WhiteSmoke;
+        }
+
+        tbody tr td:nth-child(2) {
+        text-align:center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <img width="100%" src="static/assets/img/membrete.png" aria-hidden="true">
+    <div class="row">
+        <div class="col-xl-9 col-md-8 col-sm-12">
+            <table id="ks-datatable" class="table table-striped table-bordered" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th colspan="2">Sector</th>
+                        <th colspan="2">Propiedad</th>
+                        <th>Fecha</th>
+                        <th>Inicio</th>
+                        <th>Fin</th>
+                        <th>Reposición</th>
+                        <th>Incidencia</th>
+                        <th colspan="2">Operador</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for control in controles %}
+                    <tr>
+                        <td style="text-align: center;">{{ control.estacion }}</td>
+                        <td style="text-align: center;" colspan="2">{{ control.estacion.sector }}</td>
+                        <td style="text-align: center;" colspan="2">{{ control.estacion.sector.propiedad }}</td>
+                        <td style="text-align: center;">{{ control.fecha|date:"d-m-Y"}}</td>
+                        <td style="text-align: center;">{{ control.inicio }}</td>
+                        <td style="text-align: center;">{{ control.fin }}</td>
+                        <td style="text-align: center;">
+                            {% if control.a_reposicion or contol.a_reemplazo %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No {% endif %}
+                        </td style="text-align: center;">
+                        <td style="text-align: center;">
+                            {% if control.e_ausencia or contol.e_consumido or contol.e_deteriorado or e_pa_deteriorada or e_no_acceso %}
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Sí {% else %}
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> No {% endif %}
+                        </td>
+                        <td style="text-align: center;" colspan="2">
+                            {% for operador in control.operador.all %} {{ operador }} {% if not forloop.last %}, {% endif %} {% endfor %}
+                        </td>
+                        
+    
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+</body>
+
+</html>

@@ -20,6 +20,8 @@ from django.http import HttpResponseRedirect
 from django.core.mail import EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from presupuesto.models import PresupuestoForm
+from django.views.generic import View
+from .utils import render_to_pdf
 
 
 def send_email(request):
@@ -182,9 +184,40 @@ def control_view(request, id=None):
 def all_control_view(request):
     controles = Control.objects.filter(
         estacion__sector__propiedad__cliente__usuario=request.user.id)
+    if 'daterange' in request.GET:
+            date_range = request.GET.get('daterange')
+            f_inicio = date_range[:10]
+            f_fin = date_range[13:24]
+            inicio = datetime.datetime.strptime(f_inicio, '%m/%d/%Y')
+            fin = datetime.datetime.strptime(f_fin, '%m/%d/%Y')
+            controles = Control.objects.filter(
+                fecha__range=[inicio, fin]).order_by('-fecha')
+            filtro_msg = "Filtro de fechas entre el " + \
+                str(f_inicio)+" y el "+str(f_fin)
+            return render(request, 'all_control.html', {'controles': controles, 'filtro_msg': filtro_msg, 'inicio': inicio, 'fin': fin})
     return render(request, 'all_control.html', {
         'controles': controles,
     })
+
+
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        if 'daterange' in request.GET:
+            date_range = request.GET.get('daterange')
+            f_inicio = date_range[:10]
+            f_fin = date_range[13:24]
+            inicio = datetime.datetime.strptime(f_inicio, '%m/%d/%Y')
+            fin = datetime.datetime.strptime(f_fin, '%m/%d/%Y')
+            controles = Control.objects.filter(
+                fecha__range=[inicio, fin]).order_by('-fecha')
+        else:
+            controles = Control.objects.filter(
+                estacion__sector__propiedad__cliente__usuario=request.user.id)
+        data = {
+            'controles': controles
+        }
+        pdf = render_to_pdf('pdf/reporte_control.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
 
 
 class ChartData(APIView):

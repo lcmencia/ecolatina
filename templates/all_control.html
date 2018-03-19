@@ -48,9 +48,9 @@
                                     </form>
                                     <div class="form-group col-md-6 text-right">
                                         {% if inicio or fin %}
-                                            <a id="crear_detalle" href="/reportes_marcaciones_general/?inicio={{ inicio }}&fin={{ fin }}" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Excel</a>
+                                            <a id="crear_detalle" href="/report/?inicio={{ inicio }}&fin={{ fin }}" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Pdf</a>
                                         {% else %}
-                                            <a id="crear_detalle" href="/reportes_marcaciones_general/" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Excel</a>
+                                            <a id="crear_detalle" href="/report/" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Pdf</a>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -182,19 +182,7 @@
 <script src="{% static 'libs/datatables-net/media/js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'libs/datatables-net/media/js/dataTables.bootstrap4.min.js' %}"></script>
 <script src="{% static 'libs/select2/js/select2.min.js' %}"></script>
-<script type="application/javascript">
-(function ($) {
-    $(document).ready(function() {
-        $('#ks-datatable').DataTable({
-            "initComplete": function () {
-                $('.dataTables_wrapper select').select2({
-                    minimumResultsForSearch: Infinity
-                });
-            }
-        });
-    });
-})(jQuery);
-</script>
+
 
 
 {% endblock %}
