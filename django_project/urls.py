@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^login/$',views.authentication, name='authentication'),
     url(r'^logout/$',views.logout_view, name='logout'),
     url(r'^api/chart/data/$', views.ChartData.as_view()),
+    url(r'^reporte_excel/$', views.ReporteExcel,
+        name="reporte_excel")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1209,7 +1209,7 @@ body.ks-sidebar-iconbar_compact .ks-navbar .navbar-brand {
     width: 230px;
     height: 100%;
     z-index: 6;
-    right: -230px;
+    right: 0;
     top: 60px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

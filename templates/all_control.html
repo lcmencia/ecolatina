@@ -47,10 +47,10 @@
                                         </div>
                                     </form>
                                     <div class="form-group col-md-6 text-right">
-                                        {% if inicio or fin %}
-                                            <a id="crear_detalle" href="/report/?inicio={{ inicio }}&fin={{ fin }}" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Pdf</a>
+                                        {% if date_range %}
+                                            <a id="crear_detalle" href="/reporte_excel/?daterange={{ date_range }}" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Excel</a>
                                         {% else %}
-                                            <a id="crear_detalle" href="/report/" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Pdf</a>
+                                            <a id="crear_detalle" href="/reporte_excel/" class="btn btn-primary-outline ks-solid"><i class="la la-file-excel-o"></i> Excel</a>
                                         {% endif %}
                                     </div>
                                 </div>

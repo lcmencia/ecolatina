@@ -6070,8 +6070,7 @@ h6 .badge {
         display: -webkit-flex;
         display: -ms-flexbox;
         -js-display: flex;
-        display: flex;
-        padding-right: 30px; }
+        display: flex; }
         .ks-navbar > .ks-wrapper > .nav > .ks-navbar-actions > .btn-action-block {
           border-left: none;
           padding: 0;
@@ -6840,16 +6839,19 @@ body.ks-sidebar-iconbar_compact .ks-navbar .navbar-brand {
 @media only screen and (max-width: 1440px) {
   .ks-navbar .navbar-brand {
     width: auto; }
-    .ks-navbar .navbar-brand > .ks-sidebar-toggle {
-      display: none; } }
+  .ks-navbar .navbar-brand > .ks-sidebar-toggle {
+    display: block; } }
 
 @media only screen and (max-width: 1200px) {
   .ks-navbar > .navbar-brand > .ks-sidebar-toggle {
-    display: none; } }
+    display: block; } }
 
 @media only screen and (max-width: 992px) {
   .ks-navbar .navbar-brand > .ks-sidebar-mobile-toggle {
-    display: block; } }
+    display: block; } 
+  .ks-navbar .navbar-brand > .ks-sidebar-toggle {
+      display: none; } 
+}
 
 @media only screen and (max-width: 1225px) {
   .ks-navbar {

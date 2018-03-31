@@ -21,6 +21,8 @@ from django.core.mail import EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from presupuesto.models import PresupuestoForm
 from django.views.generic import View
+from django.views.generic.base import TemplateView
+from openpyxl import Workbook
 
 
 def send_email(request):
@@ -193,12 +195,73 @@ def all_control_view(request):
                 fecha__range=[inicio, fin]).order_by('-fecha')
             filtro_msg = "Filtro de fechas entre el " + \
                 str(f_inicio)+" y el "+str(f_fin)
-            return render(request, 'all_control.html', {'controles': controles, 'filtro_msg': filtro_msg, 'inicio': inicio, 'fin': fin})
+            return render(request, 'all_control.html', {'controles': controles, 'filtro_msg': filtro_msg, 'date_range': date_range})
     return render(request, 'all_control.html', {
         'controles': controles,
     })
 
 
+def ReporteExcel(request):
+
+    wb = Workbook()
+    #Definimos como nuestra hoja de trabajo, la hoja activa, por defecto la primera del libro
+    ws = wb.active
+    #En la celda B1 ponemos el texto 'REPORTE DE PERSONAS'
+    ws['B1'] = 'REPORTE'
+    #Juntamos las celdas desde la B1 hasta la E1, formando una sola celda
+    ws.merge_cells('B1:E1')
+    #Creamos los encabezados desde la celda B3 hasta la E3
+    # ws['A3'] = '#'
+    ws['B3'] = 'SECTOR'
+    ws['C3'] = 'PROPIEDAD'
+    ws['D3'] = 'FECHA'
+    ws['E3'] = 'INICIO'
+    ws['F3'] = 'FIN'
+    ws['G3'] = 'REPOSICIÓN'
+    ws['H3'] = 'INCIDENCIA'
+    ws['I3'] = 'OBSERVACIONES'
+    cont = 4
+    
+    if 'daterange' in request.GET:
+        date_range = request.GET.get('daterange')
+        print(date_range)
+        f_inicio = date_range[:10]
+        f_fin = date_range[13:24]
+        inicio = datetime.datetime.strptime(f_inicio, '%m/%d/%Y')
+        fin = datetime.datetime.strptime(f_fin, '%m/%d/%Y')
+        controles = Control.objects.filter(
+            fecha__range=[inicio, fin], estacion__sector__propiedad__cliente__usuario=request.user.id).order_by('-fecha')
+    else:
+        print('else')
+        controles = Control.objects.filter(
+            estacion__sector__propiedad__cliente__usuario=request.user.id)
+
+    #Recorremos el conjunto de personas y vamos escribiendo cada uno de los datos en las celdas
+    for control in controles:
+        # ws.cell(row=cont, column=1).value = control.estacion
+        ws.cell(row=cont, column=2).value = '%s' % (control.estacion.sector)
+        ws.cell(row=cont, column=3).value = '%s' % (control.estacion.sector.propiedad)
+        ws.cell(row=cont, column=4).value = '%s' % (control.fecha)
+        ws.cell(row=cont, column=5).value = '%s' % (control.inicio)
+        ws.cell(row=cont, column=6).value = '%s' % (control.fin)
+        if control.a_reposicion or control.a_reemplazo:
+            ws.cell(row=cont, column=7).value = 'SI'
+        else:
+            ws.cell(row=cont, column=7).value = 'NO'
+        if control.e_ausencia or control.e_consumido or control.e_deteriorado or control.e_pa_deteriorada or control.e_no_acceso:
+            ws.cell(row=cont, column=8).value = 'SI'
+        else:
+            ws.cell(row=cont, column=8).value = 'NO'
+
+        cont = cont + 1
+    #Establecemos el nombre del archivo
+    nombre_archivo = "ReportePersonasExcel.xlsx"
+    #Definimos que el tipo de respuesta a devolver es un archivo de microsoft excel
+    response = HttpResponse(content_type="application/ms-excel")
+    contenido = "attachment; filename={0}".format(nombre_archivo)
+    response["Content-Disposition"] = contenido
+    wb.save(response)
+    return response
 
 
 class ChartData(APIView):
