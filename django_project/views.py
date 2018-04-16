@@ -32,10 +32,12 @@ def send_email(request):
         if form.is_valid():
             form.save()
             data = form.cleaned_data
-            body = data['empresa'] + '\n' + data['nombre'] + \
-                '\n' + data['telefono'] + '\n' + data['mensaje']
-            asunto = data['email']
-            email = EmailMessage(asunto, body, to=['info@ecolatinapy.com'])
+            body = data['mensaje'] + '\n' + \
+                'Tel.: ' + data['telefono']
+            asunto = data['nombre']+ ' ' + '-' + ' ' + data['empresa']
+            contacto = data['email']
+            email = EmailMessage(asunto, body, 'info@ecolatinapy.com', to=[
+                                 'info@ecolatinapy.com'], headers={'Reply-To': contacto})
             email.send()
             return redirect('/')
     else:
@@ -50,10 +52,12 @@ def blog_list(request):
         if form.is_valid():
             form.save()
             data = form.cleaned_data
-            body = data['empresa'] + '\n' + data['nombre'] + \
-                '\n' + data['telefono'] + '\n' + data['mensaje']
-            asunto = data['email']
-            email = EmailMessage(asunto, body, to=['info@ecolatinapy.com'])
+            body = data['mensaje'] + '\n' + \
+                'Tel.: ' + data['telefono']
+            asunto = data['nombre'] + ' ' + '-' + ' ' + data['empresa']
+            contacto = data['email']
+            email = EmailMessage(asunto, body, 'info@ecolatinapy.com', to=[
+                                 'info@ecolatinapy.com'], headers={'Reply-To': contacto})
             email.send()
             return redirect('/')
     else:
@@ -277,8 +281,10 @@ def GeneratePdf(request):
     else:
         controles = Control.objects.filter(
             estacion__sector__propiedad__cliente__usuario=request.user.id)
+    cliente = Cliente.objects.get(usuario=request.user.id)
     data = {
-        'controles': controles
+        'controles': controles,
+        'cliente': cliente
     }
     pdf = render_to_pdf('pdf/reporte_control.html', data)
     return HttpResponse(pdf, content_type='application/pdf')
