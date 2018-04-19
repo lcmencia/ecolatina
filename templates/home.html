@@ -22,6 +22,33 @@
     <link rel="stylesheet" type="text/css" href="{% static "home/css/bootstrap.min.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/ecolatina.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "home/css/responsiveness.css" %}" />
+     !-- Global site tag (gtag.js) - Google AdWords: 876406204 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-876406204"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      gtag('config', 'AW-876406204');
+    </script>
+    <!-- Event snippet for Conversiones Presupuesto conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof (url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-876406204/9155CJi2xnIQvMvzoQM',
+          'value': 1.0,
+          'currency': 'USD',
+          'event_callback': callback
+        });
+        return false;
+      }
+    </script>
     <!-- Facebook Pixel Code -->
 	<script>
 	!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -49,33 +76,7 @@
   ga('send', 'pageview');
 
 </script>
- !-- Global site tag (gtag.js) - Google AdWords: 876406204 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-876406204"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'AW-876406204');
-</script>
-<!-- Event snippet for Conversiones Presupuesto conversion page
-In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
-<script>
-  function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof (url) != 'undefined') {
-        window.location = url;
-      }
-    };
-    gtag('event', 'conversion', {
-      'send_to': 'AW-876406204/9155CJi2xnIQvMvzoQM',
-      'value': 1.0,
-      'currency': 'USD',
-      'event_callback': callback
-    });
-    return false;
-  }
-</script>
+ 
   </head>
 
   <body>
