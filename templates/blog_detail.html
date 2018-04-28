@@ -54,6 +54,33 @@
   ga('send', 'pageview');
 
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82400961-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82400961-1');
+</script>
+<!-- Event snippet for Conversiones Presupuesto conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof (url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-876406204/9155CJi2xnIQvMvzoQM',
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+    });
+    return false;
+  }
+</script>
  
   </head>
 
@@ -75,7 +102,7 @@
         <div id="navbar" class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
               <li><a href="/blog/">BLOG</a></li>
-            <li><a href="#" data-toggle="modal" data-target=".modal-budget">PRESUPUESTO</a></li>
+            <li><a href="#" data-toggle="modal" data-target=".modal-budget" onclick="gtag_report_conversion()">PRESUPUESTO</a></li>
             <li><a href="/panel/">PANEL</a></li>
             <li class="ignore"><a id="bottom-tape" href="#free-inspection">botton</a></li>
           </ul>
