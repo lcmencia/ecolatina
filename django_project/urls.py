@@ -15,13 +15,17 @@ urlpatterns = [
     url(r'^panel/$',  views.index_view, name='panel'),
     url(r'^all_control/$',  views.all_control_view, name='all_control'),
     url(r'^control/(?P<id>\d+)/$',  views.control_view, name='control'),
-    url(r'^property/$',  views.property_view, name='property'),
+    url(r'^control_property/(?P<id>\d+)/$',  views.control_by_property_view, name='control_property'),
+    url(r'^client/$',  views.client_view, name='client'),
+    url(r'^property/(?P<id>\d+)/$',  views.property_view, name='property'),
     url(r'^sector/(?P<id>\d+)/$',  views.sector_view, name='sector'),
     url(r'^station/(?P<id>\d+)/$',  views.station_view, name='station'),
     url(r'^login/$',views.authentication, name='authentication'),
     url(r'^logout/$',views.logout_view, name='logout'),
     url(r'^api/chart/data/$', views.ChartData.as_view()),
     url(r'^reporte_excel/$', views.ReporteExcel, name="reporte_excel"),
-    url(r'^reporte_pdf/$', views.GeneratePdf, name="reporte_pdf")
+    url(r'^reporte_pdf/$', views.GeneratePdf, name="reporte_pdf"),
+    url(r'^reporte_pdf_by_property/(?P<id>\d+)/$',
+        views.reporte_control_by_property_view, name="reporte_pdf_by_property")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

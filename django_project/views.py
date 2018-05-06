@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 from cliente.models import *
 from blog.models import *
+from string import strip
 # Charts
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse, HttpResponse
@@ -128,12 +129,10 @@ def logout_view(request):
 
 @login_required(None, 'login', '/login/')
 def index_view(request):
-    propiedades = Propiedad.objects.filter(cliente__usuario=request.user.id)
+    propiedades = Propiedad.objects.all()
     totalPropiedades = propiedades.count()
-    cebos = Estacion.objects.filter(
-        sector__propiedad__cliente__usuario=request.user.id)
-    controles = Control.objects.filter(
-        estacion__sector__propiedad__cliente__usuario=request.user.id)
+    cebos = Estacion.objects.all()
+    controles = Control.objects.filter()
     controles_recientes = controles[:3]
     capturados = controles.filter(e_capturado=True)
     totalPropiedades = propiedades.count()
@@ -147,12 +146,21 @@ def index_view(request):
         'controles_recientes': controles_recientes,
     })
 
+
 @login_required(None, 'login', '/login/')
-def property_view(request):
-    propiedades = Propiedad.objects.select_related(
-        "cliente").filter(cliente__usuario=request.user.id)
+def client_view(request):
+    clientes = Cliente.objects.all()
+    return render(request, 'cliente.html', {
+        'clientes': clientes,
+    })
+
+@login_required(None, 'login', '/login/')
+def property_view(request, id=None):
+    propiedades = Propiedad.objects.filter(cliente=id)
+    cliente = Cliente.objects.get(pk=id)
     return render(request, 'propiedad.html', {
         'propiedades': propiedades,
+        'cliente': cliente,
     })
 
 
@@ -177,9 +185,30 @@ def station_view(request, id=None):
 
 
 @login_required(None, 'login', '/login/')
+def control_by_property_view(request, id=None):
+    today = datetime.datetime.now().date()
+    controles = Control.objects.filter(
+        estacion__sector__propiedad=id, fecha=today)
+    propiedad = Propiedad.objects.get(pk=id)
+    if 'date' in request.GET:
+        date = request.GET.get('date')
+        date = strip(date)
+        if date!="":
+            date = datetime.datetime.strptime(date, '%d/%m/%Y').date()
+            controles = Control.objects.filter(estacion__sector__propiedad=id,
+                fecha=date).order_by('-fecha')
+            return render(request, 'control_property.html', {'propiedad': propiedad, 'controles': controles, 'date': date})
+    return render(request, 'control_property.html', {
+        'propiedad': propiedad,
+        'controles': controles
+    })
+
+
+@login_required(None, 'login', '/login/')
 def control_view(request, id=None):
     controles = Control.objects.filter(estacion=id)
     estacion = Estacion.objects.get(pk=id)
+    
     return render(request, 'control.html', {
         'estacion': estacion,
         'controles': controles
@@ -188,8 +217,7 @@ def control_view(request, id=None):
 
 @login_required(None, 'login', '/login/')
 def all_control_view(request):
-    controles = Control.objects.filter(
-        estacion__sector__propiedad__cliente__usuario=request.user.id)
+    controles = Control.objects.all()
     if 'daterange' in request.GET:
             date_range = request.GET.get('daterange')
             f_inicio = date_range[:10]
@@ -277,17 +305,41 @@ def GeneratePdf(request):
         inicio = datetime.datetime.strptime(f_inicio, '%m/%d/%Y')
         fin = datetime.datetime.strptime(f_fin, '%m/%d/%Y')
         controles = Control.objects.filter(
-            fecha__range=[inicio, fin], estacion__sector__propiedad__cliente__usuario=request.user.id).order_by('-fecha')
+            fecha__range=[inicio, fin]).order_by('-fecha')
     else:
-        controles = Control.objects.filter(
-            estacion__sector__propiedad__cliente__usuario=request.user.id)
-    cliente = Cliente.objects.get(usuario=request.user.id)
+        controles = Control.objects.all()
     data = {
-        'controles': controles,
-        'cliente': cliente
+        'controles': controles
     }
     pdf = render_to_pdf('pdf/reporte_control.html', data)
     return HttpResponse(pdf, content_type='application/pdf')
+
+
+def reporte_control_by_property_view(request, id=None):
+    propiedad = Propiedad.objects.get(pk=id)
+    cliente = Cliente.objects.get(propiedad=id)
+    date = datetime.datetime.now().date()
+    if 'date' in request.GET:
+        date = request.GET.get('date')
+        date = strip(date)
+        if date != "":
+            date = datetime.datetime.strptime(date, '%d/%m/%Y').date()
+            controles = Control.objects.filter(estacion__sector__propiedad=id,
+                                               fecha=date).order_by('-fecha')
+    else:
+        controles = Control.objects.filter(
+        estacion__sector__propiedad=id, fecha=date)
+        
+        
+    data = {
+        'controles': controles,
+        'cliente': cliente,
+        'propiedad': propiedad,
+        'date': date
+    }
+    pdf = render_to_pdf('pdf/reporte_control_by_property.html', data)
+    return HttpResponse(pdf, content_type='application/pdf')
+
 
 class ChartData(APIView):
     authentication_classes = []
